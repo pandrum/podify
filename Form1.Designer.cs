@@ -99,7 +99,6 @@
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "URL:";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // comboBox1
             // 
@@ -125,7 +124,6 @@
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Updateinterval";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -230,7 +228,6 @@
             this.Controls.Add(this.listBox1);
             this.Name = "Podcasts";
             this.Text = "Podcasts";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
