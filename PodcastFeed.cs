@@ -13,7 +13,6 @@ namespace AutomateEverything
     {
         public PodcastFeed()
         {
-            //Test
         }
 
         public static void Test()
@@ -25,6 +24,16 @@ namespace AutomateEverything
                 Console.WriteLine(item.Title.Text);
                 Console.ReadLine();
             }
+        }
+
+        public static void WriteXML()
+        {
+            string path = @"C:\C:\temp\test.xml";
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = ("    ");
+
+            XmlWriter xmlOut = XmlWriter.Create(path, settings);
         }
     }
 }
