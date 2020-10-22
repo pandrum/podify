@@ -29,71 +29,72 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Podcasts));
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbxEpisodes = new System.Windows.Forms.ListBox();
+            this.btnAddNewPodcast = new System.Windows.Forms.Button();
+            this.btnSavePodcast = new System.Windows.Forms.Button();
+            this.btnDeletePodcast = new System.Windows.Forms.Button();
+            this.txtUrl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbUpdate = new System.Windows.Forms.ComboBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.lbxCategories = new System.Windows.Forms.ListBox();
+            this.txtAddNewCategory = new System.Windows.Forms.TextBox();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
+            this.btnSaveCategory = new System.Windows.Forms.Button();
+            this.btnAddCategory = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgPodcastFeed = new System.Windows.Forms.DataGridView();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lbxEpisodes
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 319);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(394, 186);
-            this.listBox1.TabIndex = 0;
+            this.lbxEpisodes.FormattingEnabled = true;
+            this.lbxEpisodes.Location = new System.Drawing.Point(12, 319);
+            this.lbxEpisodes.Name = "lbxEpisodes";
+            this.lbxEpisodes.Size = new System.Drawing.Size(394, 186);
+            this.lbxEpisodes.TabIndex = 0;
             // 
-            // button1
+            // btnAddNewPodcast
             // 
-            this.button1.Location = new System.Drawing.Point(169, 267);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "New...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddNewPodcast.Location = new System.Drawing.Point(169, 267);
+            this.btnAddNewPodcast.Name = "btnAddNewPodcast";
+            this.btnAddNewPodcast.Size = new System.Drawing.Size(75, 23);
+            this.btnAddNewPodcast.TabIndex = 1;
+            this.btnAddNewPodcast.Text = "Add";
+            this.btnAddNewPodcast.UseVisualStyleBackColor = true;
+            this.btnAddNewPodcast.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnSavePodcast
             // 
-            this.button2.Location = new System.Drawing.Point(250, 267);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSavePodcast.Location = new System.Drawing.Point(250, 267);
+            this.btnSavePodcast.Name = "btnSavePodcast";
+            this.btnSavePodcast.Size = new System.Drawing.Size(75, 23);
+            this.btnSavePodcast.TabIndex = 2;
+            this.btnSavePodcast.Text = "Save";
+            this.btnSavePodcast.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDeletePodcast
             // 
-            this.button3.Location = new System.Drawing.Point(331, 267);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Delete...";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDeletePodcast.Location = new System.Drawing.Point(331, 267);
+            this.btnDeletePodcast.Name = "btnDeletePodcast";
+            this.btnDeletePodcast.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletePodcast.TabIndex = 3;
+            this.btnDeletePodcast.Text = "Delete...";
+            this.btnDeletePodcast.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtUrl
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 240);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtUrl.Location = new System.Drawing.Point(12, 240);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(150, 20);
+            this.txtUrl.TabIndex = 4;
             // 
             // label1
             // 
@@ -104,21 +105,21 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "URL:";
             // 
-            // comboBox1
+            // cbUpdate
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(171, 240);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cbUpdate.FormattingEnabled = true;
+            this.cbUpdate.Location = new System.Drawing.Point(171, 240);
+            this.cbUpdate.Name = "cbUpdate";
+            this.cbUpdate.Size = new System.Drawing.Size(121, 21);
+            this.cbUpdate.TabIndex = 6;
             // 
-            // comboBox2
+            // cbCategory
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(298, 240);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(110, 21);
-            this.comboBox2.TabIndex = 7;
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(298, 240);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(110, 21);
+            this.cbCategory.TabIndex = 7;
             // 
             // label2
             // 
@@ -138,47 +139,47 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Category";
             // 
-            // listBox3
+            // lbxCategories
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(425, 12);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(237, 199);
-            this.listBox3.TabIndex = 11;
+            this.lbxCategories.FormattingEnabled = true;
+            this.lbxCategories.Location = new System.Drawing.Point(425, 12);
+            this.lbxCategories.Name = "lbxCategories";
+            this.lbxCategories.Size = new System.Drawing.Size(237, 199);
+            this.lbxCategories.TabIndex = 11;
             // 
-            // textBox2
+            // txtAddNewCategory
             // 
-            this.textBox2.Location = new System.Drawing.Point(425, 240);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(237, 20);
-            this.textBox2.TabIndex = 13;
+            this.txtAddNewCategory.Location = new System.Drawing.Point(425, 240);
+            this.txtAddNewCategory.Name = "txtAddNewCategory";
+            this.txtAddNewCategory.Size = new System.Drawing.Size(237, 20);
+            this.txtAddNewCategory.TabIndex = 13;
             // 
-            // button4
+            // btnDeleteCategory
             // 
-            this.button4.Location = new System.Drawing.Point(585, 267);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Delete...";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(585, 267);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteCategory.TabIndex = 16;
+            this.btnDeleteCategory.Text = "Delete...";
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnSaveCategory
             // 
-            this.button5.Location = new System.Drawing.Point(504, 267);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "Save";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSaveCategory.Location = new System.Drawing.Point(504, 267);
+            this.btnSaveCategory.Name = "btnSaveCategory";
+            this.btnSaveCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveCategory.TabIndex = 15;
+            this.btnSaveCategory.Text = "Save";
+            this.btnSaveCategory.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAddCategory
             // 
-            this.button6.Location = new System.Drawing.Point(423, 267);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "New...";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Location = new System.Drawing.Point(423, 267);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.TabIndex = 14;
+            this.btnAddCategory.Text = "Add";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -199,20 +200,20 @@
             this.textBox3.TabIndex = 19;
             this.textBox3.Text = resources.GetString("textBox3.Text");
             // 
-            // dataGridView1
+            // dgPodcastFeed
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgPodcastFeed.AllowUserToAddRows = false;
+            this.dgPodcastFeed.AllowUserToDeleteRows = false;
+            this.dgPodcastFeed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPodcastFeed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Name,
             this.Frequency,
             this.Category});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(394, 199);
-            this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgPodcastFeed.Location = new System.Drawing.Point(12, 12);
+            this.dgPodcastFeed.Name = "dgPodcastFeed";
+            this.dgPodcastFeed.Size = new System.Drawing.Size(394, 199);
+            this.dgPodcastFeed.TabIndex = 20;
+            this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Name
             // 
@@ -234,26 +235,26 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 516);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgPodcastFeed);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.btnDeleteCategory);
+            this.Controls.Add(this.btnSaveCategory);
+            this.Controls.Add(this.btnAddCategory);
+            this.Controls.Add(this.txtAddNewCategory);
+            this.Controls.Add(this.lbxCategories);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbCategory);
+            this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.txtUrl);
+            this.Controls.Add(this.btnDeletePodcast);
+            this.Controls.Add(this.btnSavePodcast);
+            this.Controls.Add(this.btnAddNewPodcast);
+            this.Controls.Add(this.lbxEpisodes);
             this.Text = "Podcasts";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,24 +262,24 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox lbxEpisodes;
+        private System.Windows.Forms.Button btnAddNewPodcast;
+        private System.Windows.Forms.Button btnSavePodcast;
+        private System.Windows.Forms.Button btnDeletePodcast;
+        private System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbUpdate;
+        private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListBox lbxCategories;
+        private System.Windows.Forms.TextBox txtAddNewCategory;
+        private System.Windows.Forms.Button btnDeleteCategory;
+        private System.Windows.Forms.Button btnSaveCategory;
+        private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgPodcastFeed;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;

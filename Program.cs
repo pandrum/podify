@@ -1,12 +1,14 @@
-﻿using System;
+﻿using DL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutomateEverything
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +18,7 @@ namespace AutomateEverything
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            PodcastFeed.Test();
+            DataManager.Test();
             Application.Run(new Podcasts());
         }
     }
