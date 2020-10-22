@@ -33,9 +33,9 @@ namespace BL
             podcastRepository.Delete(index);
         }
 
-        public static void FetchFeed()
+        public static void FetchFeed(string url)
         {
-            XmlReader reader = XmlReader.Create("http://joeroganexp.joerogan.libsynpro.com/rss");
+            XmlReader reader = XmlReader.Create(url);
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             foreach (var item in feed.Items)
             {
