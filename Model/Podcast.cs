@@ -19,7 +19,7 @@ namespace Model
             TotalOfEpisodes = aTotalOfEpisodes;
         }
 
-        public void 
+        
 
     }
 }
