@@ -17,7 +17,7 @@ namespace AutomateEverything
 
         public static void Test()
         {
-            XmlReader reader = XmlReader.Create("https://feed.pod.space/alexosigge");
+            XmlReader reader = XmlReader.Create("https://rss.art19.com/impaulsive-with-logan-paul");
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             foreach (var item in feed.Items)
             {
