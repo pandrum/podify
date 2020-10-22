@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace AutomateEverything
+namespace DL
 {
-    internal class DataManager
+    public class DataManager
     {
         public DataManager()
         {
@@ -17,11 +17,15 @@ namespace AutomateEverything
 
         public static void Test()
         {
-            XmlReader reader = XmlReader.Create("https://rss.art19.com/impaulsive-with-logan-paul");
+            XmlReader reader = XmlReader.Create("http://joeroganexp.joerogan.libsynpro.com/rss");
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             foreach (var item in feed.Items)
             {
-                Console.WriteLine(item.Title.Text);
+                string title = item.Title.Text;
+                Console.WriteLine(title);
+
+                var description = item.Summary.Text;
+                Console.WriteLine(description);
                 Console.ReadLine();
             }
         }
