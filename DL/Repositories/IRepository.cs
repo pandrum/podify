@@ -4,12 +4,14 @@ using System.Text;
 
 namespace DL.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : class
     {
-        void delete(int index);
+        void Create(T entity);
 
-        void add(int index);
+        void Delete(int index);
 
-      
+        void SaveChanges();
+
+        List<T> GetAllPodCasts();
     }
 }

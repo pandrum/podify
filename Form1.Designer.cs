@@ -280,7 +280,6 @@
             this.Controls.Add(this.btnAddNewPodcast);
             this.Controls.Add(this.lbxEpisodes);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Podcasts";
             this.Text = "Podcasts";
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).EndInit();
             this.ResumeLayout(false);

@@ -18,7 +18,6 @@ namespace AutomateEverything
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DataManager.Test();
             Application.Run(new Podcasts());
         }
     }

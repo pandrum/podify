@@ -6,20 +6,17 @@ namespace Model
     {
         public string URL { get; set; }
         public string Name { get; set; }
-        public  string Category { get; set; }
+        public string Category { get; set; }
         public int Interval { get; set; }
-        public int TotalOfEpisodes { get; set; }
+        public int TotalEpisodes { get; set; }
 
-        public Podcast (string aUrl, string aName, string aCategory, int aInterval, int aTotalOfEpisodes)
+        public Podcast(string url, string name, string category, int interval, int totalEpisodes)
         {
-            URL = aUrl;
-            Name = aName;
-            Category = aCategory;
-            Interval = aInterval;
-            TotalOfEpisodes = aTotalOfEpisodes;
+            URL = url;
+            Name = name;
+            Category = category;
+            Interval = interval;
+            TotalEpisodes = totalEpisodes;
         }
-
-        
-
     }
 }
