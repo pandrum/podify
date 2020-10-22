@@ -11,7 +11,6 @@ namespace Model
         public int TotalOfEpisodes { get; set; }
 
         public Podcast (string aUrl, string aName, string aCategory, int aInterval, int aTotalOfEpisodes)
-
         {
             URL = aUrl;
             Name = aName;
@@ -19,6 +18,8 @@ namespace Model
             Interval = aInterval;
             TotalOfEpisodes = aTotalOfEpisodes;
         }
+
+        public void 
 
     }
 }
