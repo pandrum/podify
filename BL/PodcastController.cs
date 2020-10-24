@@ -16,9 +16,9 @@ namespace BL
             podcastRepository = new PodcastRepository();
         }
 
-        public void AddNewPodcast(string url, string name, string category, int interval, int totalEpisodes)
+        public void AddNewPodcast(string url, string name, string category, int interval)
         {
-            Podcast podcast = new Podcast(url, name, category, interval, totalEpisodes);
+            Podcast podcast = new Podcast(url, name, category, interval);
 
             podcastRepository.Create(podcast);
         }

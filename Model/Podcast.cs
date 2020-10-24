@@ -10,13 +10,12 @@ namespace Model
         public int Interval { get; set; }
         public int TotalEpisodes { get; set; }
 
-        public Podcast(string url, string name, string category, int interval, int totalEpisodes)
+        public Podcast(string url, string name, string category, int interval)
         {
             URL = url;
             Name = name;
             Category = category;
             Interval = interval;
-            TotalEpisodes = totalEpisodes;
         }
     }
 }

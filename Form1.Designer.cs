@@ -1,6 +1,6 @@
 ﻿namespace AutomateEverything
 {
-    partial class Podcasts
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Podcasts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.lbxEpisodes = new System.Windows.Forms.ListBox();
             this.btnAddNewPodcast = new System.Windows.Forms.Button();
             this.btnSavePodcast = new System.Windows.Forms.Button();
@@ -50,6 +50,8 @@
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,12 +60,12 @@
             this.lbxEpisodes.FormattingEnabled = true;
             this.lbxEpisodes.Location = new System.Drawing.Point(12, 319);
             this.lbxEpisodes.Name = "lbxEpisodes";
-            this.lbxEpisodes.Size = new System.Drawing.Size(394, 186);
+            this.lbxEpisodes.Size = new System.Drawing.Size(560, 186);
             this.lbxEpisodes.TabIndex = 0;
             // 
             // btnAddNewPodcast
             // 
-            this.btnAddNewPodcast.Location = new System.Drawing.Point(169, 267);
+            this.btnAddNewPodcast.Location = new System.Drawing.Point(335, 267);
             this.btnAddNewPodcast.Name = "btnAddNewPodcast";
             this.btnAddNewPodcast.Size = new System.Drawing.Size(75, 23);
             this.btnAddNewPodcast.TabIndex = 1;
@@ -73,7 +75,7 @@
             // 
             // btnSavePodcast
             // 
-            this.btnSavePodcast.Location = new System.Drawing.Point(250, 267);
+            this.btnSavePodcast.Location = new System.Drawing.Point(416, 267);
             this.btnSavePodcast.Name = "btnSavePodcast";
             this.btnSavePodcast.Size = new System.Drawing.Size(75, 23);
             this.btnSavePodcast.TabIndex = 2;
@@ -82,7 +84,7 @@
             // 
             // btnDeletePodcast
             // 
-            this.btnDeletePodcast.Location = new System.Drawing.Point(331, 267);
+            this.btnDeletePodcast.Location = new System.Drawing.Point(497, 267);
             this.btnDeletePodcast.Name = "btnDeletePodcast";
             this.btnDeletePodcast.Size = new System.Drawing.Size(75, 23);
             this.btnDeletePodcast.TabIndex = 3;
@@ -101,30 +103,39 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 224);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "URL:";
+            this.label1.Text = "URL";
             // 
             // cbUpdate
             // 
+            this.cbUpdate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUpdate.FormattingEnabled = true;
-            this.cbUpdate.Location = new System.Drawing.Point(171, 240);
+            this.cbUpdate.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15"});
+            this.cbUpdate.Location = new System.Drawing.Point(337, 240);
             this.cbUpdate.Name = "cbUpdate";
-            this.cbUpdate.Size = new System.Drawing.Size(121, 21);
+            this.cbUpdate.Size = new System.Drawing.Size(109, 21);
             this.cbUpdate.TabIndex = 6;
             // 
             // cbCategory
             // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(298, 240);
+            this.cbCategory.Items.AddRange(new object[] {
+            "Music",
+            "Tech"});
+            this.cbCategory.Location = new System.Drawing.Point(464, 240);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(110, 21);
+            this.cbCategory.Size = new System.Drawing.Size(108, 21);
             this.cbCategory.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(168, 224);
+            this.label2.Location = new System.Drawing.Point(334, 224);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 8;
@@ -133,7 +144,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(298, 224);
+            this.label3.Location = new System.Drawing.Point(464, 224);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 9;
@@ -142,21 +153,21 @@
             // lbxCategories
             // 
             this.lbxCategories.FormattingEnabled = true;
-            this.lbxCategories.Location = new System.Drawing.Point(425, 12);
+            this.lbxCategories.Location = new System.Drawing.Point(592, 12);
             this.lbxCategories.Name = "lbxCategories";
             this.lbxCategories.Size = new System.Drawing.Size(237, 199);
             this.lbxCategories.TabIndex = 11;
             // 
             // txtAddNewCategory
             // 
-            this.txtAddNewCategory.Location = new System.Drawing.Point(425, 240);
+            this.txtAddNewCategory.Location = new System.Drawing.Point(592, 240);
             this.txtAddNewCategory.Name = "txtAddNewCategory";
             this.txtAddNewCategory.Size = new System.Drawing.Size(237, 20);
             this.txtAddNewCategory.TabIndex = 13;
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(585, 267);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(752, 267);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteCategory.TabIndex = 16;
@@ -165,7 +176,7 @@
             // 
             // btnSaveCategory
             // 
-            this.btnSaveCategory.Location = new System.Drawing.Point(504, 267);
+            this.btnSaveCategory.Location = new System.Drawing.Point(671, 267);
             this.btnSaveCategory.Name = "btnSaveCategory";
             this.btnSaveCategory.Size = new System.Drawing.Size(75, 23);
             this.btnSaveCategory.TabIndex = 15;
@@ -174,7 +185,7 @@
             // 
             // btnAddCategory
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(423, 267);
+            this.btnAddCategory.Location = new System.Drawing.Point(590, 267);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
             this.btnAddCategory.TabIndex = 14;
@@ -185,7 +196,7 @@
             // 
             this.lblPodcastDesc.AutoSize = true;
             this.lblPodcastDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPodcastDesc.Location = new System.Drawing.Point(422, 303);
+            this.lblPodcastDesc.Location = new System.Drawing.Point(589, 303);
             this.lblPodcastDesc.Name = "lblPodcastDesc";
             this.lblPodcastDesc.Size = new System.Drawing.Size(126, 13);
             this.lblPodcastDesc.TabIndex = 17;
@@ -193,7 +204,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(425, 319);
+            this.textBox3.Location = new System.Drawing.Point(592, 319);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(248, 185);
@@ -214,7 +225,7 @@
             this.dgPodcastFeed.Name = "dgPodcastFeed";
             this.dgPodcastFeed.RowHeadersVisible = false;
             this.dgPodcastFeed.RowHeadersWidth = 51;
-            this.dgPodcastFeed.Size = new System.Drawing.Size(394, 199);
+            this.dgPodcastFeed.Size = new System.Drawing.Size(560, 199);
             this.dgPodcastFeed.TabIndex = 20;
             this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -236,11 +247,29 @@
             this.Category.MinimumWidth = 6;
             this.Category.Name = "Category";
             // 
-            // Podcasts
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(168, 240);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(150, 20);
+            this.txtName.TabIndex = 21;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(165, 224);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 22;
+            this.lblName.Text = "Name";
+            // 
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 516);
+            this.ClientSize = new System.Drawing.Size(841, 516);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.dgPodcastFeed);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.lblPodcastDesc);
@@ -259,8 +288,6 @@
             this.Controls.Add(this.btnSavePodcast);
             this.Controls.Add(this.btnAddNewPodcast);
             this.Controls.Add(this.lbxEpisodes);
-            this.Name = "Podcasts";
-            this.Text = "Podcasts";
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,6 +317,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
     }
 }
 

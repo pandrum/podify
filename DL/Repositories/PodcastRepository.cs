@@ -1,4 +1,5 @@
 ﻿using Model;
+using DL;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,13 @@ namespace DL.Repositories
         public void Create(Podcast podcast)
         {
             podcastList.Add(podcast);
+            foreach (var item in podcastList)
+            {
+                Console.WriteLine(item.URL);
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Category);
+                Console.WriteLine(item.Interval);
+            }
         }
 
         public void Delete(int index)
@@ -29,7 +37,7 @@ namespace DL.Repositories
 
         public void SaveChanges()
         {
-            //TODO
+            dataManager.Serialize(podcastList);
         }
 
         public List<Podcast> GetAllPodCasts()

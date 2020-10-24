@@ -14,17 +14,16 @@ namespace DL
 {
     public class DataManager
     {
-        public static void WriteXML()
+        public void Serialize(List<Podcast> podcastList)
         {
-            string path = @"podcasts.xml";
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.IndentChars = ("    ");
-
-            XmlWriter xmlOut = XmlWriter.Create(path, settings);
+            XmlSerializer xmlSerializer = new XmlSerializer(podcastList.GetType());
+            using (FileStream outFile = new FileStream("Podcasts.xml", FileMode.Append, FileAccess.Write))
+            {
+                xmlSerializer.Serialize(outFile, podcastList);
+            }
         }
 
-        public static List<Podcast> Deserialize()
+        public List<Podcast> Deserialize()
         {
             List<Podcast> podcastList;
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
