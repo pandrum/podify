@@ -18,7 +18,8 @@ namespace BL
 
         public void AddNewPodcast(string url, string name, string category, int interval)
         {
-            Podcast podcast = new Podcast(url, name, category, interval);
+            List<Episode> episodes = GetEpisodes(url);
+            Podcast podcast = new Podcast(url, name, category, interval, episodes);
 
             podcastRepository.Create(podcast);
         }
@@ -33,18 +34,27 @@ namespace BL
             podcastRepository.Delete(index);
         }
 
-        public static void FetchFeed(string url)
+        public List<Episode> GetEpisodes(string url)
         {
+            List<Episode> episodes = new List<Episode>();
             XmlReader reader = XmlReader.Create(url);
             SyndicationFeed feed = SyndicationFeed.Load(reader);
+
             foreach (var item in feed.Items)
             {
+                Episode episode = new Episode();
                 string title = item.Title.Text;
-                Console.WriteLine(title);
+                episode.Name = title;
 
                 var description = item.Summary.Text;
-                Console.WriteLine(description);
+                episode.Description = description;
+
+                Console.WriteLine(episode.Name);
+                Console.WriteLine(episode.Description);
+
+                episodes.Add(episode);
             }
+            return episodes;
         }
     }
 }

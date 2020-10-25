@@ -21,6 +21,7 @@ namespace DL.Repositories
         public void Create(Podcast podcast)
         {
             podcastList.Add(podcast);
+
             foreach (var item in podcastList)
             {
                 Console.WriteLine(item.URL);
@@ -28,6 +29,8 @@ namespace DL.Repositories
                 Console.WriteLine(item.Category);
                 Console.WriteLine(item.Interval);
             }
+
+            SaveChanges();
         }
 
         public void Delete(int index)
