@@ -14,7 +14,7 @@ namespace DL.Repositories
         {
             podcastList = new List<Podcast>();
             dataManager = new DataManager();
-            //podcastList = GetAllPodCasts();
+            podcastList = GetAllPodCasts();
         }
 
         public void Create(Podcast podcast)

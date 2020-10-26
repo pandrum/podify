@@ -13,6 +13,7 @@ namespace AutomateEverything
         {
             InitializeComponent();
             podcastController = new PodcastController();
+            FillTables();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -27,6 +28,16 @@ namespace AutomateEverything
             int interval = Convert.ToInt32(cbUpdate.SelectedItem);
 
             podcastController.AddNewPodcast(url, name, category, interval);
+        }
+
+        public void FillTables()
+        {
+            var podcastList = podcastController.GetAllPodcasts();
+
+            foreach (var p in podcastList)
+            {
+                dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
+            }
         }
     }
 }

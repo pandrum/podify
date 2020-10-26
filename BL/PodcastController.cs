@@ -20,17 +20,6 @@ namespace BL
             List<Episode> episodes = GetEpisodes(url);
             Podcast p = new Podcast(url, name, category, interval, episodes);
 
-            //System.Console.WriteLine(p.Category);
-            //System.Console.WriteLine(p.Interval);
-            //System.Console.WriteLine(p.Name);
-            //System.Console.WriteLine(p.Url);
-
-            //foreach (var item in p.Episodes)
-            //{
-            //    System.Console.WriteLine(item.Name);
-            //    System.Console.WriteLine(item.Description);
-            //}
-
             podcastRepository.Create(p);
         }
 
