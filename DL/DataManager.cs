@@ -21,22 +21,21 @@ namespace DL
 
         public List<Podcast> Deserialize()
         {
+            List<Podcast> podcastListToReturn = new List<Podcast>();
             try
             {
-                List<Podcast> podcastListReturn;
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
                 using (FileStream inFile = new FileStream("Podcasts.xml", FileMode.Open,
                     FileAccess.Read))
                 {
-                    podcastListReturn = (List<Podcast>)xmlSerializer.Deserialize(inFile);
+                    podcastListToReturn = (List<Podcast>)xmlSerializer.Deserialize(inFile);
                 }
-                return podcastListReturn;
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("No XML-file found.");
             }
-            return null;
+            return podcastListToReturn;
         }
     }
 }

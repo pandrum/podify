@@ -7,21 +7,27 @@ namespace DL.Repositories
     public class PodcastRepository : IRepository<Podcast>
 
     {
-        private List<Podcast> podcastList;
-        private DataManager dataManager;
+        public List<Podcast> podcastList;
+        public DataManager dataManager;
 
         public PodcastRepository()
         {
             podcastList = new List<Podcast>();
             dataManager = new DataManager();
-            podcastList = GetAllPodCasts();
+            //podcastList = GetAllPodCasts();
         }
 
         public void Create(Podcast podcast)
         {
-            podcastList.Add(podcast);
-
-            SaveChanges();
+            try
+            {
+                podcastList.Add(podcast);
+                SaveChanges();
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("Fel att lägga till Podcast i PodcastRepository");
+            }
         }
 
         public void Delete(int index)
@@ -41,7 +47,7 @@ namespace DL.Repositories
             {
                 returnPodcastList = dataManager.Deserialize();
             }
-            catch (Exception)
+            catch (InvalidOperationException)
             {
                 Console.WriteLine("No list to return.");
             }

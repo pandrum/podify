@@ -44,9 +44,8 @@ namespace BL
                 Episode episode = new Episode();
 
                 string title = item.Title.Text;
-                episode.Name = title;
-
                 string description = item.Summary.Text;
+                episode.Name = title;
                 episode.Description = description;
 
                 episodes.Add(episode);

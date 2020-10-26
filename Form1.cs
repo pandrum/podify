@@ -39,11 +39,12 @@ namespace AutomateEverything
                 foreach (var p in podcastList)
                 {
                     dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
+                    Console.WriteLine(p.Name, p.Interval, p.Category);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Fel! " + ex.Message);
+                Console.WriteLine("Fel!");
             }
         }
     }
