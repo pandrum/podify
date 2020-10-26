@@ -32,11 +32,18 @@ namespace AutomateEverything
 
         public void FillTables()
         {
-            var podcastList = podcastController.GetAllPodcasts();
-
-            foreach (var p in podcastList)
+            try
             {
-                dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
+                var podcastList = podcastController.GetAllPodcasts();
+
+                foreach (var p in podcastList)
+                {
+                    dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fel! " + ex.Message);
             }
         }
     }
