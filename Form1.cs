@@ -20,10 +20,24 @@ namespace AutomateEverything
         {
             InitializeComponent();
             podcastController = new PodcastController();
+            fillTable();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        public void fillTable()
+        {
+            //
+            var podcastList = podcastController.GetAllPodcasts();
+
+            //foreach (var p in podcastList)
+            //{
+            //    dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
+            //}
+
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
