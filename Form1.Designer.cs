@@ -288,6 +288,7 @@
             this.Controls.Add(this.btnSavePodcast);
             this.Controls.Add(this.btnAddNewPodcast);
             this.Controls.Add(this.lbxEpisodes);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

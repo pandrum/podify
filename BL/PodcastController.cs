@@ -1,6 +1,5 @@
 ﻿using Model;
 using DL.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Xml;
 using System.ServiceModel.Syndication;
@@ -9,7 +8,7 @@ namespace BL
 {
     public class PodcastController
     {
-        private IRepository<Podcast> podcastRepository;
+        private PodcastRepository podcastRepository;
 
         public PodcastController()
         {
@@ -19,9 +18,20 @@ namespace BL
         public void AddNewPodcast(string url, string name, string category, int interval)
         {
             List<Episode> episodes = GetEpisodes(url);
-            Podcast podcast = new Podcast(url, name, category, interval, episodes);
+            Podcast p = new Podcast(url, name, category, interval, episodes);
 
-            podcastRepository.Create(podcast);
+            //System.Console.WriteLine(p.Category);
+            //System.Console.WriteLine(p.Interval);
+            //System.Console.WriteLine(p.Name);
+            //System.Console.WriteLine(p.Url);
+
+            //foreach (var item in p.Episodes)
+            //{
+            //    System.Console.WriteLine(item.Name);
+            //    System.Console.WriteLine(item.Description);
+            //}
+
+            podcastRepository.Create(p);
         }
 
         public List<Podcast> GetAllPodcasts()
@@ -49,9 +59,6 @@ namespace BL
 
                 string description = item.Summary.Text;
                 episode.Description = description;
-
-                Console.WriteLine(episode.Name);
-                Console.WriteLine(episode.Description);
 
                 episodes.Add(episode);
             }

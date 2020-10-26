@@ -1,38 +1,42 @@
 ﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace DL
 {
     public class DataManager
     {
-        private string path = @"Podcasts.xml";
-        private List<Podcast> podcastList;
-
         public void Serialize(List<Podcast> podcastList)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(podcastList.GetType());
-            using (FileStream outFile = new FileStream(path, FileMode.Append, FileAccess.Write))
+            using (FileStream outFile = new FileStream("Podcasts.xml", FileMode.Append, FileAccess.Write))
             {
                 xmlSerializer.Serialize(outFile, podcastList);
+                MessageBox.Show("Podcast successfully added to your feed!");
             }
         }
 
         public List<Podcast> Deserialize()
         {
-            if (File.Exists(path))
+            try
             {
-                List<Podcast> podcastList;
+                List<Podcast> podcastListReturn;
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
-                using (FileStream inFile = new FileStream(path, FileMode.Open,
+                using (FileStream inFile = new FileStream("Podcasts.xml", FileMode.Open,
                     FileAccess.Read))
                 {
-                    podcastList = (List<Podcast>)xmlSerializer.Deserialize(inFile);
-                    return podcastList;
+                    podcastListReturn = (List<Podcast>)xmlSerializer.Deserialize(inFile);
                 }
+                return podcastListReturn;
             }
-            return podcastList;
+            catch (Exception)
+            {
+                Console.WriteLine("No XML-file found.");
+            }
+            return null;
         }
     }
 }
