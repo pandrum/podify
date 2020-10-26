@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Model
 {
+    [Serializable, XmlRoot("Podcasts")]
     public class Podcast
     {
         public string Url { get; set; }
@@ -21,6 +23,8 @@ namespace Model
         }
 
         public Podcast()
-        { }
+        {
+            //Woop
+        }
     }
 }

@@ -16,10 +16,6 @@ namespace AutomateEverything
             FillTables();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string url = txtUrl.Text;
@@ -32,19 +28,11 @@ namespace AutomateEverything
 
         public void FillTables()
         {
-            try
-            {
-                var podcastList = podcastController.GetAllPodcasts();
+            var podcastList = podcastController.GetAllPodcasts();
 
-                foreach (var p in podcastList)
-                {
-                    dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
-                    Console.WriteLine(p.Name, p.Interval, p.Category);
-                }
-            }
-            catch (Exception)
+            foreach (var p in podcastList)
             {
-                Console.WriteLine("Fel!");
+                dgPodcastFeed.Rows.Add(p.Name, p.Interval, p.Category);
             }
         }
     }

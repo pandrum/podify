@@ -14,7 +14,7 @@ namespace DL.Repositories
         {
             podcastList = new List<Podcast>();
             dataManager = new DataManager();
-            //podcastList = GetAllPodCasts();
+            podcastList = GetAllPodCasts();
         }
 
         public void Create(Podcast podcast)
@@ -26,7 +26,7 @@ namespace DL.Repositories
             }
             catch (NullReferenceException)
             {
-                Console.WriteLine("Fel att lägga till Podcast i PodcastRepository");
+                //
             }
         }
 

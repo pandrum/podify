@@ -47,11 +47,11 @@
             this.lblPodcastDesc = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dgPodcastFeed = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.Podcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,34 +218,18 @@
             this.dgPodcastFeed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgPodcastFeed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPodcastFeed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
+            this.Podcast,
             this.Frequency,
             this.Category});
             this.dgPodcastFeed.Location = new System.Drawing.Point(12, 12);
             this.dgPodcastFeed.Name = "dgPodcastFeed";
+            this.dgPodcastFeed.ReadOnly = true;
             this.dgPodcastFeed.RowHeadersVisible = false;
             this.dgPodcastFeed.RowHeadersWidth = 51;
+            this.dgPodcastFeed.RowTemplate.ReadOnly = true;
+            this.dgPodcastFeed.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPodcastFeed.Size = new System.Drawing.Size(560, 199);
             this.dgPodcastFeed.TabIndex = 20;
-            this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            // 
-            // Frequency
-            // 
-            this.Frequency.HeaderText = "Frequency";
-            this.Frequency.MinimumWidth = 6;
-            this.Frequency.Name = "Frequency";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
             // 
             // txtName
             // 
@@ -263,11 +247,31 @@
             this.lblName.TabIndex = 22;
             this.lblName.Text = "Name";
             // 
+            // Podcast
+            // 
+            this.Podcast.HeaderText = "Podcast";
+            this.Podcast.Name = "Podcast";
+            this.Podcast.ReadOnly = true;
+            // 
+            // Frequency
+            // 
+            this.Frequency.HeaderText = "Frequency";
+            this.Frequency.MinimumWidth = 6;
+            this.Frequency.Name = "Frequency";
+            this.Frequency.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 516);
+            this.ClientSize = new System.Drawing.Size(847, 516);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dgPodcastFeed);
@@ -288,6 +292,8 @@
             this.Controls.Add(this.btnSavePodcast);
             this.Controls.Add(this.btnAddNewPodcast);
             this.Controls.Add(this.lbxEpisodes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).EndInit();
             this.ResumeLayout(false);
@@ -315,11 +321,11 @@
         private System.Windows.Forms.Label lblPodcastDesc;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridView dgPodcastFeed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Podcast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
     }
 }
 

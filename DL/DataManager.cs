@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Linq;
+using System.Xml;
 
 namespace DL
 {
@@ -12,7 +15,7 @@ namespace DL
         public void Serialize(List<Podcast> podcastList)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(podcastList.GetType());
-            using (FileStream outFile = new FileStream("Podcasts.xml", FileMode.Append, FileAccess.Write))
+            using (FileStream outFile = new FileStream("Podcasts.xml", FileMode.Create, FileAccess.Write))
             {
                 xmlSerializer.Serialize(outFile, podcastList);
                 MessageBox.Show("Podcast successfully added to your feed!");
@@ -21,21 +24,21 @@ namespace DL
 
         public List<Podcast> Deserialize()
         {
-            List<Podcast> podcastListToReturn = new List<Podcast>();
+            List<Podcast> podcastList = new List<Podcast>();
             try
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
                 using (FileStream inFile = new FileStream("Podcasts.xml", FileMode.Open,
                     FileAccess.Read))
                 {
-                    podcastListToReturn = (List<Podcast>)xmlSerializer.Deserialize(inFile);
+                    podcastList = (List<Podcast>)xmlSerializer.Deserialize(inFile);
                 }
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("No XML-file found.");
+                Console.WriteLine("No list to fetch.");
             }
-            return podcastListToReturn;
+            return podcastList;
         }
     }
 }
