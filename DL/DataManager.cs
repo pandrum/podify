@@ -14,6 +14,8 @@ namespace DL
 {
     public class DataManager
     {
+        private List<Podcast> podcastList;
+
         public void Serialize(List<Podcast> podcastList)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(podcastList.GetType());
@@ -25,14 +27,20 @@ namespace DL
 
         public List<Podcast> Deserialize()
         {
-            List<Podcast> podcastList;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
-            using (FileStream inFile = new FileStream("Podcasts.xml", FileMode.Open,
-                FileAccess.Read))
+            if(File.Exists("Podcasts.xml"))
             {
-                podcastList = (List<Podcast>)xmlSerializer.Deserialize(inFile);
+                List<Podcast> podcastList;
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
+                using (FileStream inFile = new FileStream("Podcasts.xml", FileMode.Open,
+                    FileAccess.Read))
+                {
+                    podcastList = (List<Podcast>)xmlSerializer.Deserialize(inFile);
+                    return podcastList;
+                }
+                
             }
             return podcastList;
         }
     }
+    
 }

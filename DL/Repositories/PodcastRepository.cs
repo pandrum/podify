@@ -45,8 +45,10 @@ namespace DL.Repositories
 
         public List<Podcast> GetAllPodCasts()
         {
-            //TODO
-            return null;
+            podcastList = dataManager.Deserialize();
+
+            return podcastList;
+            
         }
     }
 }
