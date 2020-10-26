@@ -1,8 +1,6 @@
 ﻿using Model;
-using DL;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DL.Repositories
 {
@@ -22,13 +20,13 @@ namespace DL.Repositories
         {
             podcastList.Add(podcast);
 
-            foreach (var item in podcastList)
-            {
-                Console.WriteLine(item.URL);
-                Console.WriteLine(item.Name);
-                Console.WriteLine(item.Category);
-                Console.WriteLine(item.Interval);
-            }
+            //foreach (var item in podcastList)
+            //{
+            //    Console.WriteLine(item.URL);
+            //    Console.WriteLine(item.Name);
+            //    Console.WriteLine(item.Category);
+            //    Console.WriteLine(item.Interval);
+            //}
 
             SaveChanges();
         }

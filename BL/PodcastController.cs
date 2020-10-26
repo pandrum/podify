@@ -43,10 +43,11 @@ namespace BL
             foreach (var item in feed.Items)
             {
                 Episode episode = new Episode();
+
                 string title = item.Title.Text;
                 episode.Name = title;
 
-                var description = item.Summary.Text;
+                string description = item.Summary.Text;
                 episode.Description = description;
 
                 Console.WriteLine(episode.Name);
