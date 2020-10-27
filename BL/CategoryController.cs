@@ -1,20 +1,18 @@
-﻿using System;
-using Model;
+﻿using Model;
 using DL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BL
 {
-    class CategoryController
+    public class CategoryController
     {
         private CategoryRepository categoryRepository;
 
-
-
-
-
-
-
+        public CategoryController()
+        {
+            categoryRepository = new CategoryRepository();
+        }
     }
 }

@@ -10,13 +10,8 @@ namespace Model
 
         public List<Category> listOfCategory;
 
-
         public Category()
         {
-           
-
         }
-        
-     }
-    
+    }
 }

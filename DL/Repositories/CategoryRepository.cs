@@ -1,14 +1,12 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DL.Repositories
 {
-    class CategoryRepository : Category
+    public class CategoryRepository
     {
         public List<Category> listOfCategory;
-        public DataManager dataManager;
 
         public void Create(Category entity)
         {
@@ -17,11 +15,10 @@ namespace DL.Repositories
 
         public void Delete(Category index)
         {
-            if (Name.Equals(index))
-            {
-                listOfCategory.Remove(index);
-            }
-
+            //if (Name.Equals(index))
+            //{
+            //    listOfCategory.Remove(index);
+            //}
         }
 
         public void GetAllCategory()
@@ -34,8 +31,6 @@ namespace DL.Repositories
 
         public void SaveCategoryChanges()
         {
-
         }
     }
-
 }

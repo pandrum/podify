@@ -17,7 +17,7 @@ namespace BL
 
         public void AddNewPodcast(string url, string name, string category, int interval)
         {
-            List<Episode> episodes = GetEpisodes(url);
+            List<Episode> episodes = GetEpisodesForPodcast(url);
             Podcast p = new Podcast(url, name, category, interval, episodes);
 
             podcastRepository.Create(p);
@@ -33,7 +33,7 @@ namespace BL
             podcastRepository.Delete(index);
         }
 
-        public List<Episode> GetEpisodes(string url)
+        public List<Episode> GetEpisodesForPodcast(string url)
         {
             List<Episode> episodes = new List<Episode>();
             XmlReader reader = XmlReader.Create(url);

@@ -40,6 +40,7 @@ namespace AutomateEverything
             {
                 dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category);
             }
+            podcastList.Clear();
         }
 
         private void dgPodcastFeed_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,15 +50,25 @@ namespace AutomateEverything
 
             List<Episode> episodeList = episodeController.GetAllEpisodesFromPodcast(selectedRow);
 
-            foreach (Episode episode in episodeList)
+            try
             {
-                lbxEpisodes.Items.Add(episode.Name);
+                foreach (Episode episode in episodeList)
+                {
+                    lbxEpisodes.Items.Add(episode.Name);
+                }
+                selectedPodcast = selectedRow;
             }
-            selectedPodcast = selectedRow;
+            catch (Exception)
+            {
+                Console.WriteLine("Error in clicking podcast");
+            }
         }
 
         private void lbxEpisodes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string episodeName = lbxEpisodes.SelectedItem.ToString();
+            lblEpisodeDescription.Text = episodeName;
+
             string selectedEpisodeName = lbxEpisodes.SelectedItem.ToString();
             List<Episode> episodeList = episodeController.GetAllEpisodesFromPodcast(selectedPodcast);
 

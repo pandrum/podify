@@ -32,6 +32,7 @@ namespace DL.Repositories
         public void SaveChanges()
         {
             dataManager.Serialize(podcastList);
+            podcastList.Clear();
         }
 
         public List<Podcast> GetAll()
