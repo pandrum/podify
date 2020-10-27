@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.lbxEpisodes = new System.Windows.Forms.ListBox();
             this.btnAddNewPodcast = new System.Windows.Forms.Button();
             this.btnSavePodcast = new System.Windows.Forms.Button();
@@ -45,13 +44,13 @@
             this.btnSaveCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.lblPodcastDesc = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtEpisodeDescription = new System.Windows.Forms.TextBox();
             this.dgPodcastFeed = new System.Windows.Forms.DataGridView();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.Podcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +61,7 @@
             this.lbxEpisodes.Name = "lbxEpisodes";
             this.lbxEpisodes.Size = new System.Drawing.Size(560, 186);
             this.lbxEpisodes.TabIndex = 0;
+            this.lbxEpisodes.SelectedIndexChanged += new System.EventHandler(this.lbxEpisodes_SelectedIndexChanged);
             // 
             // btnAddNewPodcast
             // 
@@ -90,6 +90,7 @@
             this.btnDeletePodcast.TabIndex = 3;
             this.btnDeletePodcast.Text = "Delete...";
             this.btnDeletePodcast.UseVisualStyleBackColor = true;
+            this.btnDeletePodcast.Click += new System.EventHandler(this.btnDeletePodcast_Click);
             // 
             // txtUrl
             // 
@@ -122,7 +123,6 @@
             // 
             // cbCategory
             // 
-            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Items.AddRange(new object[] {
             "Music",
@@ -198,18 +198,17 @@
             this.lblPodcastDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPodcastDesc.Location = new System.Drawing.Point(589, 303);
             this.lblPodcastDesc.Name = "lblPodcastDesc";
-            this.lblPodcastDesc.Size = new System.Drawing.Size(126, 13);
+            this.lblPodcastDesc.Size = new System.Drawing.Size(120, 13);
             this.lblPodcastDesc.TabIndex = 17;
-            this.lblPodcastDesc.Text = "Podcast # Episode #";
+            this.lblPodcastDesc.Text = "Episode Description";
             // 
-            // textBox3
+            // txtEpisodeDescription
             // 
-            this.textBox3.Location = new System.Drawing.Point(592, 319);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(248, 185);
-            this.textBox3.TabIndex = 19;
-            this.textBox3.Text = resources.GetString("textBox3.Text");
+            this.txtEpisodeDescription.Location = new System.Drawing.Point(592, 319);
+            this.txtEpisodeDescription.Multiline = true;
+            this.txtEpisodeDescription.Name = "txtEpisodeDescription";
+            this.txtEpisodeDescription.Size = new System.Drawing.Size(248, 185);
+            this.txtEpisodeDescription.TabIndex = 19;
             // 
             // dgPodcastFeed
             // 
@@ -230,22 +229,7 @@
             this.dgPodcastFeed.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPodcastFeed.Size = new System.Drawing.Size(560, 199);
             this.dgPodcastFeed.TabIndex = 20;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(168, 240);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(150, 20);
-            this.txtName.TabIndex = 21;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(165, 224);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 22;
-            this.lblName.Text = "Name";
+            this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellContentClick);
             // 
             // Podcast
             // 
@@ -267,6 +251,22 @@
             this.Category.Name = "Category";
             this.Category.ReadOnly = true;
             // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(168, 240);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(150, 20);
+            this.txtName.TabIndex = 21;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(165, 224);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 22;
+            this.lblName.Text = "Name";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,7 +275,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dgPodcastFeed);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtEpisodeDescription);
             this.Controls.Add(this.lblPodcastDesc);
             this.Controls.Add(this.btnDeleteCategory);
             this.Controls.Add(this.btnSaveCategory);
@@ -319,7 +319,7 @@
         private System.Windows.Forms.Button btnSaveCategory;
         private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Label lblPodcastDesc;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtEpisodeDescription;
         private System.Windows.Forms.DataGridView dgPodcastFeed;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;

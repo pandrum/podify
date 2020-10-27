@@ -8,31 +8,25 @@ namespace DL.Repositories
 
     {
         public List<Podcast> podcastList;
-        public DataManager dataManager;
+        public DatamanagerPodcast dataManager;
 
         public PodcastRepository()
         {
             podcastList = new List<Podcast>();
-            dataManager = new DataManager();
-            podcastList = GetAllPodCasts();
+            dataManager = new DatamanagerPodcast();
+            podcastList = GetAll();
         }
 
         public void Create(Podcast podcast)
         {
-            try
-            {
-                podcastList.Add(podcast);
-                SaveChanges();
-            }
-            catch (NullReferenceException)
-            {
-                //
-            }
+            podcastList.Add(podcast);
+            SaveChanges();
         }
 
         public void Delete(int index)
         {
             podcastList.RemoveAt(index);
+            SaveChanges();
         }
 
         public void SaveChanges()
@@ -40,7 +34,7 @@ namespace DL.Repositories
             dataManager.Serialize(podcastList);
         }
 
-        public List<Podcast> GetAllPodCasts()
+        public List<Podcast> GetAll()
         {
             List<Podcast> returnPodcastList = new List<Podcast>();
             try

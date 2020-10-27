@@ -25,7 +25,7 @@ namespace BL
 
         public List<Podcast> GetAllPodcasts()
         {
-            return podcastRepository.GetAllPodCasts();
+            return podcastRepository.GetAll();
         }
 
         public void DeletePodcast(int index)

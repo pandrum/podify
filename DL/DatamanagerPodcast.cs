@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace DL
 {
-    public class DataManager
+    public class DatamanagerPodcast
     {
         public void Serialize(List<Podcast> podcastList)
         {
@@ -18,7 +18,6 @@ namespace DL
             using (FileStream outFile = new FileStream("Podcasts.xml", FileMode.Create, FileAccess.Write))
             {
                 xmlSerializer.Serialize(outFile, podcastList);
-                MessageBox.Show("Podcast successfully added to your feed!");
             }
         }
 
