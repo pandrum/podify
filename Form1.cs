@@ -43,11 +43,11 @@ namespace AutomateEverything
             podcastList.Clear();
         }
 
-        private void dgPodcastFeed_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgPodcastFeed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lbxEpisodes.Items.Clear();
-            int selectedRow = dgPodcastFeed.CurrentCell.RowIndex;
 
+            int selectedRow = dgPodcastFeed.CurrentRow.Index;
             List<Episode> episodeList = episodeController.GetAllEpisodesFromPodcast(selectedRow);
 
             try
