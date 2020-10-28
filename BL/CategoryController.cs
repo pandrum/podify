@@ -14,5 +14,15 @@ namespace BL
         {
             categoryRepository = new CategoryRepository();
         }
+
+        public void AddNewCategory(Category category)
+        {
+            categoryRepository.Create(category);
+        }
+
+        public List<Category> GetCategories()
+        {
+            return categoryRepository.GetAllCategories();
+        }
     }
 }

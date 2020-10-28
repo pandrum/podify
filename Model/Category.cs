@@ -8,7 +8,10 @@ namespace Model
     {
         public string Name { get; set; }
 
-        public List<Category> listOfCategory;
+        public Category(string name)
+        {
+            Name = name;
+        }
 
         public Category()
         {

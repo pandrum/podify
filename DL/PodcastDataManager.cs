@@ -3,14 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Linq;
-using System.Xml;
 
 namespace DL
 {
-    public class DatamanagerPodcast
+    public class PodcastDataManager
     {
         public void Serialize(List<Podcast> podcastList)
         {

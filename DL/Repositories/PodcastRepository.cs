@@ -8,12 +8,12 @@ namespace DL.Repositories
 
     {
         public List<Podcast> podcastList;
-        public DatamanagerPodcast dataManager;
+        public PodcastDataManager dataManager;
 
         public PodcastRepository()
         {
             podcastList = new List<Podcast>();
-            dataManager = new DatamanagerPodcast();
+            dataManager = new PodcastDataManager();
             podcastList = GetAll();
         }
 
@@ -32,7 +32,18 @@ namespace DL.Repositories
         public void SaveChanges()
         {
             dataManager.Serialize(podcastList);
-            podcastList.Clear();
+        }
+
+        public void UpdateList(Podcast podcast)
+        {
+            for (int i = 0; i < podcastList.Count; i++)
+            {
+                if (podcastList[i].Url.Equals(podcast.Url))
+                {
+                    podcastList[i] = podcast;
+                }
+            }
+            SaveChanges();
         }
 
         public List<Podcast> GetAll()

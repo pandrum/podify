@@ -11,14 +11,17 @@ namespace AutomateEverything
     {
         private PodcastController podcastController;
         private EpisodeController episodeController;
+        private CategoryController categoryController;
         private int selectedPodcast = 0;
 
         public MainWindow()
         {
+            InitializeComponent();
             podcastController = new PodcastController();
             episodeController = new EpisodeController();
-            InitializeComponent();
-            FillPodcastFeed();
+            categoryController = new CategoryController();
+            FillPodcastList();
+            FillCategoryList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -26,13 +29,12 @@ namespace AutomateEverything
             string url = txtUrl.Text;
             string name = txtName.Text;
             string category = cbCategory.Text;
-            int interval = Convert.ToInt32(cbUpdate.SelectedItem);
+            int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
             podcastController.AddNewPodcast(url, name, category, interval);
-            FillPodcastFeed();
         }
 
-        private void FillPodcastFeed()
+        private void FillPodcastList()
         {
             var podcastList = podcastController.GetAllPodcasts();
 
@@ -40,16 +42,43 @@ namespace AutomateEverything
             {
                 dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category);
             }
-            podcastList.Clear();
+        }
+
+        private void FillCategoryList()
+        {
+            var categoryList = categoryController.GetCategories();
+
+            foreach (var category in categoryList)
+            {
+                lbxCategories.Items.Add(category.Name);
+            }
+        }
+
+        private void PopulateTextBoxes(int selectedRow)
+        {
+            //populate url textbox
+            var url = podcastController.GetPodcastUrl(selectedRow);
+            txtUrl.Text = url;
+
+            //populate name textbox
+            var name = podcastController.GetPodcastName(selectedRow);
+            txtName.Text = name;
+
+            //populate interval combobox
+            var interval = podcastController.GetPodcastUpdateInterval(selectedRow);
+            cbInterval.SelectedItem = interval;
+
+            //populate category combobox
+            var category = podcastController.GetPodcastCategory(selectedRow);
+            cbCategory.Text = category;
         }
 
         private void dgPodcastFeed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lbxEpisodes.Items.Clear();
-
             int selectedRow = dgPodcastFeed.CurrentRow.Index;
+            PopulateTextBoxes(selectedRow);
             List<Episode> episodeList = episodeController.GetAllEpisodesFromPodcast(selectedRow);
-
             try
             {
                 foreach (Episode episode in episodeList)
@@ -57,6 +86,8 @@ namespace AutomateEverything
                     lbxEpisodes.Items.Add(episode.Name);
                 }
                 selectedPodcast = selectedRow;
+
+                lblEpisodeList.Text = "Episodes for " + podcastController.GetPodcastName(selectedRow);
             }
             catch (Exception)
             {
@@ -89,7 +120,23 @@ namespace AutomateEverything
 
             MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?");
             podcastController.DeletePodcast(selectedPodcast);
-            FillPodcastFeed();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string url = txtUrl.Text;
+            string name = txtName.Text;
+            string interval = cbInterval.SelectedItem.ToString();
+            string category = cbCategory.Text;
+
+            podcastController.UpdatePodcastInfo(selectedPodcast, url, name, interval, category);
+        }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            string categoryName = txtAddNewCategory.Text;
+            Category category = new Category(categoryName);
+            categoryController.AddNewCategory(category);
         }
     }
 }

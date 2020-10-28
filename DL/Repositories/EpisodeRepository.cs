@@ -8,12 +8,12 @@ namespace DL.Repositories
     {
         public List<Episode> episodeList;
         public List<Podcast> podcastList;
-        public DatamanagerPodcast dataManager;
+        public PodcastDataManager dataManager;
 
         public EpisodeRepository()
         {
             podcastList = new List<Podcast>();
-            dataManager = new DatamanagerPodcast();
+            dataManager = new PodcastDataManager();
         }
 
         public List<Episode> GetAll(int index)

@@ -1,36 +1,38 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
 
 namespace DL.Repositories
 {
     public class CategoryRepository
     {
-        public List<Category> listOfCategory;
+        public List<Category> categoryList;
+        public CategoryDataManager categoryDataManager;
 
-        public void Create(Category entity)
+        public CategoryRepository()
         {
-            listOfCategory.Add(entity);
+            categoryDataManager = new CategoryDataManager();
+            categoryList = GetAllCategories();
+        }
+
+        public void Create(Category category)
+        {
+            categoryList.Add(category);
+            SaveCategoryChanges();
         }
 
         public void Delete(Category index)
         {
-            //if (Name.Equals(index))
-            //{
-            //    listOfCategory.Remove(index);
-            //}
+            //
         }
 
-        public void GetAllCategory()
+        public List<Category> GetAllCategories()
         {
-            foreach (var category in listOfCategory)
-            {
-                Console.WriteLine(listOfCategory);
-            }
+            return categoryDataManager.Deserialize();
         }
 
         public void SaveCategoryChanges()
         {
+            categoryDataManager.Serialize(categoryList);
         }
     }
 }
