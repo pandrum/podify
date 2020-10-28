@@ -17,12 +17,31 @@ namespace DL.Repositories
         public void Create(Category category)
         {
             categoryList.Add(category);
-            SaveCategoryChanges();
+            saveChanges();
         }
 
-        public void Delete(Category index)
+        public void Update(string currentName, string newName)
         {
-            //
+            for (int i = 0; i < categoryList.Count; i++)
+            {
+                if (categoryList[i].Name.Equals(currentName))
+                {
+                    categoryList[i].Name = newName;
+                }
+            }
+            saveChanges();
+        }
+
+        public void Delete(string categoryName)
+        {
+            for (int i = 0; i < categoryList.Count; i++)
+            {
+                if (categoryList[i].Name.Equals(categoryName))
+                {
+                    categoryList.Remove(categoryList[i]);
+                }
+            }
+            saveChanges();
         }
 
         public List<Category> GetAllCategories()
@@ -30,7 +49,7 @@ namespace DL.Repositories
             return categoryDataManager.Deserialize();
         }
 
-        public void SaveCategoryChanges()
+        public void saveChanges()
         {
             categoryDataManager.Serialize(categoryList);
         }

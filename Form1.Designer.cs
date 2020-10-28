@@ -38,7 +38,7 @@
             this.lblUpdateInterval = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lbxCategories = new System.Windows.Forms.ListBox();
-            this.txtAddNewCategory = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.btnSaveCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
@@ -162,13 +162,13 @@
             this.lbxCategories.Size = new System.Drawing.Size(525, 200);
             this.lbxCategories.TabIndex = 11;
             // 
-            // txtAddNewCategory
+            // txtCategory
             // 
-            this.txtAddNewCategory.Location = new System.Drawing.Point(591, 262);
-            this.txtAddNewCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtAddNewCategory.Name = "txtAddNewCategory";
-            this.txtAddNewCategory.Size = new System.Drawing.Size(237, 20);
-            this.txtAddNewCategory.TabIndex = 13;
+            this.txtCategory.Location = new System.Drawing.Point(591, 262);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(237, 20);
+            this.txtCategory.TabIndex = 13;
             // 
             // btnDeleteCategory
             // 
@@ -179,6 +179,7 @@
             this.btnDeleteCategory.TabIndex = 16;
             this.btnDeleteCategory.Text = "Delete...";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // btnSaveCategory
             // 
@@ -187,8 +188,9 @@
             this.btnSaveCategory.Name = "btnSaveCategory";
             this.btnSaveCategory.Size = new System.Drawing.Size(74, 25);
             this.btnSaveCategory.TabIndex = 15;
-            this.btnSaveCategory.Text = "Save";
+            this.btnSaveCategory.Text = "Update";
             this.btnSaveCategory.UseVisualStyleBackColor = true;
+            this.btnSaveCategory.Click += new System.EventHandler(this.btnSaveCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -347,7 +349,7 @@
             this.Controls.Add(this.btnDeleteCategory);
             this.Controls.Add(this.btnSaveCategory);
             this.Controls.Add(this.btnAddCategory);
-            this.Controls.Add(this.txtAddNewCategory);
+            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.lbxCategories);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblUpdateInterval);
@@ -381,7 +383,7 @@
         private System.Windows.Forms.Label lblUpdateInterval;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.ListBox lbxCategories;
-        private System.Windows.Forms.TextBox txtAddNewCategory;
+        private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.Button btnDeleteCategory;
         private System.Windows.Forms.Button btnSaveCategory;
         private System.Windows.Forms.Button btnAddCategory;
