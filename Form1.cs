@@ -22,6 +22,7 @@ namespace AutomateEverything
             categoryController = new CategoryController();
             FillPodcastList();
             FillCategoryList();
+            FillDropDown();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,6 +43,16 @@ namespace AutomateEverything
             {
                 dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category);
             }
+        }
+
+        private void FillDropDown()
+        {
+            foreach (var category in lbxCategories.Items)
+            {
+                cbCategory.Items.Add(category);
+
+            }
+            
         }
 
         private void FillCategoryList()
@@ -137,6 +148,8 @@ namespace AutomateEverything
             string categoryName = txtAddNewCategory.Text;
             Category category = new Category(categoryName);
             categoryController.AddNewCategory(category);
+            
+
         }
     }
 }
