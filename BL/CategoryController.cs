@@ -20,6 +20,16 @@ namespace BL
             categoryRepository.Create(category);
         }
 
+        public void DeleteCategory(string categoryName)
+        {
+            categoryRepository.Delete(categoryName);
+        }
+
+        public void UpdateCategoryName(string currentName, string newName)
+        {
+            categoryRepository.Update(currentName, newName);
+        }
+
         public List<Category> GetCategories()
         {
             return categoryRepository.GetAllCategories();

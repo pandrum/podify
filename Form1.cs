@@ -145,11 +145,31 @@ namespace AutomateEverything
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            string categoryName = txtAddNewCategory.Text;
+            string categoryName = txtCategory.Text;
             Category category = new Category(categoryName);
             categoryController.AddNewCategory(category);
             
 
+        }
+
+        private void btnSaveCategory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string currentName = lbxCategories.SelectedItem.ToString();
+                string newName = txtCategory.Text;
+                categoryController.UpdateCategoryName(currentName, newName);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Out of bounds for categories!");
+            }
+        }
+
+        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        {
+            string categoryName = lbxCategories.SelectedItem.ToString();
+            categoryController.DeleteCategory(categoryName);
         }
     }
 }
