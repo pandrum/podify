@@ -57,7 +57,7 @@ namespace BL
             podcast.Name = name;
             podcast.Interval = Convert.ToInt32(interval);
             podcast.Category = category;
-            podcastRepository.UpdateList(podcast);
+            podcastRepository.Update(index, podcast);
         }
 
         public void AddNewPodcast(string url, string name, string category, int interval)
@@ -78,35 +78,19 @@ namespace BL
             podcastRepository.Delete(index);
         }
 
-        //public List<Episode> GetEpisodesForPodcast(string url)
-        //{
-        //    List<Episode> episodes = new List<Episode>();
-        //    XmlReader reader = XmlReader.Create(url);
-        //    SyndicationFeed feed = SyndicationFeed.Load(reader);
-
-        //    foreach (var item in feed.Items)
-        //    {
-        //        Episode episode = new Episode();
-        //        episode.Name = item.Title.Text;
-        //        episode.Description = item.Summary.Text;
-        //        episodes.Add(episode);
-        //    }
-        //    return episodes;
-        //}
-
         public List<Episode> GetEpisodesForPodcast(string url)
         {
-            List<Episode> episodeList = new List<Episode>();
+            List<Episode> episode = new List<Episode>();
             {
                 urlDocument = XDocument.Load(url);
-                episodeList = (from x in urlDocument.Descendants("item")
-                               select new Episode
-                               {
-                                   Name = x.Element("title").Value,
-                                   Description = x.Element("description").Value
-                               }).ToList();
+                episode = (from x in urlDocument.Descendants("item")
+                           select new Episode
+                           {
+                               Name = x.Element("title").Value,
+                               Description = x.Element("description").Value
+                           }).ToList();
             };
-            return episodeList;
+            return episode;
         }
     }
 }

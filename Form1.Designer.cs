@@ -54,6 +54,7 @@
             this.Updateinterval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblNewCategory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             this.btnAddNewPodcast.Name = "btnAddNewPodcast";
             this.btnAddNewPodcast.Size = new System.Drawing.Size(78, 25);
             this.btnAddNewPodcast.TabIndex = 1;
-            this.btnAddNewPodcast.Text = "Add";
+            this.btnAddNewPodcast.Text = "Add New";
             this.btnAddNewPodcast.UseVisualStyleBackColor = true;
             this.btnAddNewPodcast.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -156,6 +157,8 @@
             // 
             this.lbxCategories.FormattingEnabled = true;
             this.lbxCategories.ItemHeight = 14;
+            this.lbxCategories.Items.AddRange(new object[] {
+            "Default"});
             this.lbxCategories.Location = new System.Drawing.Point(591, 27);
             this.lbxCategories.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lbxCategories.Name = "lbxCategories";
@@ -199,7 +202,7 @@
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(74, 25);
             this.btnAddCategory.TabIndex = 14;
-            this.btnAddCategory.Text = "Add";
+            this.btnAddCategory.Text = "Add New";
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
@@ -332,11 +335,21 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // lblNewCategory
+            // 
+            this.lblNewCategory.AutoSize = true;
+            this.lblNewCategory.Location = new System.Drawing.Point(588, 242);
+            this.lblNewCategory.Name = "lblNewCategory";
+            this.lblNewCategory.Size = new System.Drawing.Size(77, 14);
+            this.lblNewCategory.TabIndex = 27;
+            this.lblNewCategory.Text = "New Category";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 538);
+            this.Controls.Add(this.lblNewCategory);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblCategoryList);
             this.Controls.Add(this.lblPodcastFeed);
@@ -399,6 +412,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Updateinterval;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblNewCategory;
     }
 }
 

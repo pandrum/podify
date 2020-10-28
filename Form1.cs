@@ -33,10 +33,15 @@ namespace AutomateEverything
             int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
             podcastController.AddNewPodcast(url, name, category, interval);
+            FillPodcastList();
+            MessageBox.Show("Podcast added!");
+            ClearInputs();
         }
 
         private void FillPodcastList()
         {
+            dgPodcastFeed.Rows.Clear();
+            dgPodcastFeed.Refresh();
             var podcastList = podcastController.GetAllPodcasts();
 
             foreach (var podcast in podcastList)
@@ -50,13 +55,12 @@ namespace AutomateEverything
             foreach (var category in lbxCategories.Items)
             {
                 cbCategory.Items.Add(category);
-
             }
-            
         }
 
         private void FillCategoryList()
         {
+            lbxCategories.Items.Clear();
             var categoryList = categoryController.GetCategories();
 
             foreach (var category in categoryList)
@@ -131,6 +135,7 @@ namespace AutomateEverything
 
             MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?");
             podcastController.DeletePodcast(selectedPodcast);
+            FillPodcastList();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -141,6 +146,8 @@ namespace AutomateEverything
             string category = cbCategory.Text;
 
             podcastController.UpdatePodcastInfo(selectedPodcast, url, name, interval, category);
+            FillPodcastList();
+            MessageBox.Show("Selected podcast updated!");
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
@@ -148,8 +155,9 @@ namespace AutomateEverything
             string categoryName = txtCategory.Text;
             Category category = new Category(categoryName);
             categoryController.AddNewCategory(category);
-            
-
+            FillCategoryList();
+            txtCategory.Text = "";
+            MessageBox.Show("New category added!");
         }
 
         private void btnSaveCategory_Click(object sender, EventArgs e)
@@ -159,6 +167,9 @@ namespace AutomateEverything
                 string currentName = lbxCategories.SelectedItem.ToString();
                 string newName = txtCategory.Text;
                 categoryController.UpdateCategoryName(currentName, newName);
+                FillPodcastList();
+                txtCategory.Text = "";
+                MessageBox.Show("Category updated!");
             }
             catch (Exception)
             {
@@ -169,7 +180,23 @@ namespace AutomateEverything
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
             string categoryName = lbxCategories.SelectedItem.ToString();
+            MessageBox.Show("Are you sure you want to delete the category " + categoryName + "?");
             categoryController.DeleteCategory(categoryName);
+            FillPodcastList();
+            txtCategory.Text = "";
+        }
+
+        private void ClearEpisodeList()
+        {
+            lbxEpisodes.Items.Clear();
+        }
+
+        private void ClearInputs()
+        {
+            txtUrl.Text = "";
+            txtName.Text = "";
+            cbInterval.SelectedIndex = -1;
+            cbCategory.SelectedIndex = -1;
         }
     }
 }

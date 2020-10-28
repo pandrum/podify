@@ -27,6 +27,7 @@ namespace DL.Repositories
                 if (categoryList[i].Name.Equals(currentName))
                 {
                     categoryList[i].Name = newName;
+                    saveChanges();
                 }
             }
             saveChanges();
@@ -39,6 +40,7 @@ namespace DL.Repositories
                 if (categoryList[i].Name.Equals(categoryName))
                 {
                     categoryList.Remove(categoryList[i]);
+                    saveChanges();
                 }
             }
             saveChanges();
