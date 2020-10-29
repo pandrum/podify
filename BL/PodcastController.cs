@@ -1,6 +1,7 @@
 ﻿using Model;
 using DL.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Linq;
 using System;
@@ -59,12 +60,17 @@ namespace BL
             podcastRepository.Update(index, podcast);
         }
 
-        public void AddNewPodcast(string url, string name, string category, int interval)
+        public async Task <Podcast> AddNewPodcast(string url, string name, string category, int interval)
         {
-            var episodes = GetEpisodesForPodcast(url);
-            Podcast p = new Podcast(url, name, category, interval, episodes);
+            Podcast podcast = new Podcast();
+            await Task.Run(() =>
+            {
+                var episodes = GetEpisodesForPodcast(url);
+                Podcast p = new Podcast(url, name, category, interval, episodes);
 
-            podcastRepository.Create(p);
+                podcastRepository.Create(p);
+            });
+            return podcast;
         }
 
         public void AddNewPodcast(string url, string name, int interval)
