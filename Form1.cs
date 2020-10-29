@@ -25,14 +25,14 @@ namespace AutomateEverything
             FillDropDown();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             string url = txtUrl.Text;
             string name = txtName.Text;
             string category = cbCategory.Text;
             int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
-            podcastController.AddNewPodcast(url, name, category, interval);
+            await podcastController.AddNewPodcast(url, name, category, interval);
         }
 
         private void FillPodcastList()
@@ -105,7 +105,7 @@ namespace AutomateEverything
                 Console.WriteLine("Error in clicking podcast");
             }
         }
-
+        
         private void lbxEpisodes_SelectedIndexChanged(object sender, EventArgs e)
         {
             string episodeName = lbxEpisodes.SelectedItem.ToString();
