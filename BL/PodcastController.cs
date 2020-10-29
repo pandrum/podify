@@ -67,6 +67,14 @@ namespace BL
             podcastRepository.Create(p);
         }
 
+        public void AddNewPodcast(string url, string name, int interval)
+        {
+            var episodes = GetEpisodesForPodcast(url);
+            Podcast p = new Podcast(url, name, "None", interval, episodes);
+
+            podcastRepository.Create(p);
+        }
+
         public List<Podcast> GetPodcasts()
         {
             return podcastRepository.GetAll();

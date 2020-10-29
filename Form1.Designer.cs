@@ -50,11 +50,11 @@
             this.lblPodcastFeed = new System.Windows.Forms.Label();
             this.lblCategoryList = new System.Windows.Forms.Label();
             this.dgPodcastFeed = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblNewCategory = new System.Windows.Forms.Label();
             this.Podcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Updateinterval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblNewCategory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,8 +157,6 @@
             // 
             this.lbxCategories.FormattingEnabled = true;
             this.lbxCategories.ItemHeight = 14;
-            this.lbxCategories.Items.AddRange(new object[] {
-            "Default"});
             this.lbxCategories.Location = new System.Drawing.Point(591, 27);
             this.lbxCategories.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lbxCategories.Name = "lbxCategories";
@@ -304,26 +302,6 @@
             this.dgPodcastFeed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(380, 283);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(78, 25);
-            this.btnUpdate.TabIndex = 26;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // lblNewCategory
-            // 
-            this.lblNewCategory.AutoSize = true;
-            this.lblNewCategory.Location = new System.Drawing.Point(588, 242);
-            this.lblNewCategory.Name = "lblNewCategory";
-            this.lblNewCategory.Size = new System.Drawing.Size(51, 14);
-            this.lblNewCategory.TabIndex = 27;
-            this.lblNewCategory.Text = "Category";
-            // 
             // Podcast
             // 
             this.Podcast.HeaderText = "Podcast";
@@ -346,6 +324,26 @@
             this.Category.Name = "Category";
             this.Category.ReadOnly = true;
             this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(380, 283);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(78, 25);
+            this.btnUpdate.TabIndex = 26;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // lblNewCategory
+            // 
+            this.lblNewCategory.AutoSize = true;
+            this.lblNewCategory.Location = new System.Drawing.Point(588, 242);
+            this.lblNewCategory.Name = "lblNewCategory";
+            this.lblNewCategory.Size = new System.Drawing.Size(51, 14);
+            this.lblNewCategory.TabIndex = 27;
+            this.lblNewCategory.Text = "Category";
             // 
             // MainWindow
             // 

@@ -1,4 +1,5 @@
 ﻿using BL;
+using DL.Repositories;
 using Model;
 using System;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace AutomateEverything
             FillPodcastList();
             FillCategoryList();
             FillCategoryComboBox();
+            Test();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -183,6 +185,15 @@ namespace AutomateEverything
             txtName.Text = "";
             cbInterval.SelectedIndex = -1;
             cbCategory.SelectedIndex = -1;
+        }
+
+        private void Test()
+        {
+            CategoryRepository categoryRepo = new CategoryRepository();
+            categoryRepo.GetNumberOfItems();
+
+            PodcastRepository podcastRepo = new PodcastRepository();
+            podcastRepo.GetNumberOfItems();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace DL.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : ListCounter, IRepository<Category>
 
     {
         public List<Category> categoryList;
@@ -29,7 +29,6 @@ namespace DL.Repositories
             {
                 category.Name = newName;
             }
-
             saveChanges();
         }
 
@@ -47,6 +46,12 @@ namespace DL.Repositories
         public void saveChanges()
         {
             categoryDataManager.Serialize(categoryList);
+        }
+
+        public override void GetNumberOfItems()
+        {
+            var items = categoryList.Count;
+            System.Console.WriteLine("The CategoryRepository has this many items in store: " + items);
         }
     }
 }

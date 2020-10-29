@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DL.Repositories
 {
-    public class PodcastRepository : IRepository<Podcast>
+    public class PodcastRepository : ListCounter, IRepository<Podcast>
 
     {
         public PodcastDataManager dataManager;
@@ -35,7 +35,6 @@ namespace DL.Repositories
             {
                 podcastList[index] = podcast;
             }
-
             SaveChanges();
         }
 
@@ -56,6 +55,12 @@ namespace DL.Repositories
         public void SaveChanges()
         {
             dataManager.Serialize(podcastList);
+        }
+
+        public override void GetNumberOfItems()
+        {
+            var items = podcastList.Count;
+            System.Console.WriteLine("The CategoryRepository has this many items in store: " + items);
         }
     }
 }
