@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DL.Repositories
 {
@@ -29,11 +30,26 @@ namespace DL.Repositories
             SaveChanges();
         }
 
+        public void DeletePodcastsByCategory(string categoryName)
+        {
+            podcastList.RemoveAll(p => p.Category == categoryName);
+            SaveChanges();
+        }
+
         public void Update(int index, Podcast podcast)
         {
             if (index >= 0)
             {
                 podcastList[index] = podcast;
+            }
+            SaveChanges();
+        }
+
+        public void UpdatePodcastCategory(string currentName, string newName)
+        {
+            foreach (var podcast in podcastList.Where(p => p.Category == currentName))
+            {
+                podcast.Category = newName;
             }
             SaveChanges();
         }

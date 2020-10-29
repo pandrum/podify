@@ -49,7 +49,7 @@ namespace BL
             return category;
         }
 
-        public void UpdatePodcastInfo(int index, string url, string name, string interval, string category)
+        public void UpdateAllPodcastInfo(int index, string url, string name, string interval, string category)
         {
             var podcastList = podcastRepository.GetAll();
             Podcast podcast = podcastList[index];
@@ -60,7 +60,12 @@ namespace BL
             podcastRepository.Update(index, podcast);
         }
 
-        public async Task <Podcast> AddNewPodcast(string url, string name, string category, int interval)
+        public void UpdatePodcastCategory(string currentName, string newName)
+        {
+            podcastRepository.UpdatePodcastCategory(currentName, newName);
+        }
+
+        public async Task<Podcast> AddNewPodcast(string url, string name, string category, int interval)
         {
             Podcast podcast = new Podcast();
             await Task.Run(() =>
@@ -73,14 +78,6 @@ namespace BL
             return podcast;
         }
 
-        public void AddNewPodcast(string url, string name, int interval)
-        {
-            var episodes = GetEpisodesForPodcast(url);
-            Podcast p = new Podcast(url, name, "None", interval, episodes);
-
-            podcastRepository.Create(p);
-        }
-
         public List<Podcast> GetPodcasts()
         {
             return podcastRepository.GetAll();
@@ -89,6 +86,11 @@ namespace BL
         public void DeletePodcast(int index)
         {
             podcastRepository.Delete(index);
+        }
+
+        public void DeletePodcastByCategory(string categoryName)
+        {
+            podcastRepository.DeletePodcastsByCategory(categoryName);
         }
 
         public List<Episode> GetEpisodesForPodcast(string url)

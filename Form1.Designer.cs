@@ -78,7 +78,7 @@
             this.btnAddNewPodcast.TabIndex = 1;
             this.btnAddNewPodcast.Text = "Add New";
             this.btnAddNewPodcast.UseVisualStyleBackColor = true;
-            this.btnAddNewPodcast.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddNewPodcast.Click += new System.EventHandler(this.btnAddNewPodcast_Click);
             // 
             // btnDeletePodcast
             // 
@@ -162,6 +162,7 @@
             this.lbxCategories.Name = "lbxCategories";
             this.lbxCategories.Size = new System.Drawing.Size(525, 200);
             this.lbxCategories.TabIndex = 11;
+            this.lbxCategories.SelectedIndexChanged += new System.EventHandler(this.lbxCategories_SelectedIndexChanged);
             // 
             // txtCategory
             // 
@@ -191,7 +192,7 @@
             this.btnSaveCategory.TabIndex = 15;
             this.btnSaveCategory.Text = "Update";
             this.btnSaveCategory.UseVisualStyleBackColor = true;
-            this.btnSaveCategory.Click += new System.EventHandler(this.btnSaveCategory_Click);
+            this.btnSaveCategory.Click += new System.EventHandler(this.btnUpdateCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -334,7 +335,7 @@
             this.btnUpdate.TabIndex = 26;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdatePodcast_Click);
             // 
             // lblNewCategory
             // 
