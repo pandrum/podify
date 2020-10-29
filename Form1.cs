@@ -2,7 +2,6 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace AutomateEverything
@@ -167,7 +166,7 @@ namespace AutomateEverything
                 string currentName = lbxCategories.SelectedItem.ToString();
                 string newName = txtCategory.Text;
                 categoryController.UpdateCategoryName(currentName, newName);
-                FillPodcastList();
+                FillCategoryList();
                 txtCategory.Text = "";
                 MessageBox.Show("Category updated!");
             }
@@ -182,13 +181,8 @@ namespace AutomateEverything
             string categoryName = lbxCategories.SelectedItem.ToString();
             MessageBox.Show("Are you sure you want to delete the category " + categoryName + "?");
             categoryController.DeleteCategory(categoryName);
-            FillPodcastList();
+            FillCategoryList();
             txtCategory.Text = "";
-        }
-
-        private void ClearEpisodeList()
-        {
-            lbxEpisodes.Items.Clear();
         }
 
         private void ClearInputs()
@@ -197,6 +191,11 @@ namespace AutomateEverything
             txtName.Text = "";
             cbInterval.SelectedIndex = -1;
             cbCategory.SelectedIndex = -1;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Console.WriteLine(DateTime.Now.ToString());
         }
     }
 }

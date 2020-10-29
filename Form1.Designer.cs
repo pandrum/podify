@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbxEpisodes = new System.Windows.Forms.ListBox();
             this.btnAddNewPodcast = new System.Windows.Forms.Button();
             this.btnDeletePodcast = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblNewCategory = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -340,9 +342,15 @@
             this.lblNewCategory.AutoSize = true;
             this.lblNewCategory.Location = new System.Drawing.Point(588, 242);
             this.lblNewCategory.Name = "lblNewCategory";
-            this.lblNewCategory.Size = new System.Drawing.Size(77, 14);
+            this.lblNewCategory.Size = new System.Drawing.Size(51, 14);
             this.lblNewCategory.TabIndex = 27;
-            this.lblNewCategory.Text = "New Category";
+            this.lblNewCategory.Text = "Category";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainWindow
             // 
@@ -413,6 +421,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblNewCategory;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
