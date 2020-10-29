@@ -79,7 +79,7 @@ namespace AutomateEverything
         private void dgPodcastFeed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lbxEpisodes.Items.Clear();
-            try
+            if (dgPodcastFeed.CurrentRow != null)
             {
                 int selectedPodcast = dgPodcastFeed.CurrentRow.Index;
                 PopulateTextBoxes(selectedPodcast);
@@ -89,10 +89,6 @@ namespace AutomateEverything
                 this.selectedPodcast = selectedPodcast;
 
                 lblEpisodeList.Text = "Episodes for " + podcastController.GetPodcastName(selectedPodcast);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Error in clicking podcast");
             }
         }
 
@@ -121,6 +117,8 @@ namespace AutomateEverything
             {
                 podcastController.DeletePodcast(selectedPodcast);
                 FillPodcastList();
+                ClearInputs();
+                ClearEpisodesList();
             }
         }
 
@@ -192,6 +190,12 @@ namespace AutomateEverything
             txtName.Text = "";
             cbInterval.SelectedIndex = -1;
             cbCategory.SelectedIndex = -1;
+        }
+
+        private void ClearEpisodesList()
+        {
+            lbxEpisodes.Items.Clear();
+            txtEpisodeDescription.Text = String.Empty;
         }
 
         private void lbxCategories_SelectedIndexChanged(object sender, EventArgs e)
