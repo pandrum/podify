@@ -31,14 +31,6 @@ namespace DL.Repositories
 
         public void Update(int index, Podcast podcast)
         {
-            //for (int i = 0; i < podcastList.Count; i++)
-            //{
-            //    if (podcastList[i].Url.Equals(podcast.Url))
-            //    {
-            //        podcastList[i] = podcast;
-            //    }
-            //}
-
             if (index >= 0)
             {
                 podcastList[index] = podcast;

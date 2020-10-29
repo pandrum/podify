@@ -10,7 +10,6 @@ namespace BL
     public class PodcastController
     {
         private PodcastRepository podcastRepository;
-        private XDocument urlDocument = new XDocument();
 
         public PodcastController()
         {
@@ -62,13 +61,13 @@ namespace BL
 
         public void AddNewPodcast(string url, string name, string category, int interval)
         {
-            List<Episode> episodes = GetEpisodesForPodcast(url);
+            var episodes = GetEpisodesForPodcast(url);
             Podcast p = new Podcast(url, name, category, interval, episodes);
 
             podcastRepository.Create(p);
         }
 
-        public List<Podcast> GetAllPodcasts()
+        public List<Podcast> GetPodcasts()
         {
             return podcastRepository.GetAll();
         }
@@ -81,6 +80,8 @@ namespace BL
         public List<Episode> GetEpisodesForPodcast(string url)
         {
             List<Episode> episode = new List<Episode>();
+            XDocument urlDocument = new XDocument();
+
             {
                 urlDocument = XDocument.Load(url);
                 episode = (from x in urlDocument.Descendants("item")

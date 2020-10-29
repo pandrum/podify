@@ -1,7 +1,7 @@
 ﻿using BL;
 using Model;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AutomateEverything
@@ -21,7 +21,7 @@ namespace AutomateEverything
             categoryController = new CategoryController();
             FillPodcastList();
             FillCategoryList();
-            FillDropDown();
+            FillCategoryComboBox();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,39 +33,29 @@ namespace AutomateEverything
 
             podcastController.AddNewPodcast(url, name, category, interval);
             FillPodcastList();
-            MessageBox.Show("Podcast added!");
             ClearInputs();
+            MessageBox.Show("Podcast added!");
         }
 
         private void FillPodcastList()
         {
             dgPodcastFeed.Rows.Clear();
             dgPodcastFeed.Refresh();
-            var podcastList = podcastController.GetAllPodcasts();
-
-            foreach (var podcast in podcastList)
-            {
-                dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category);
-            }
+            var podcastList = podcastController.GetPodcasts();
+            podcastList.ToList().ForEach(podcast => dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category));
         }
 
-        private void FillDropDown()
+        private void FillCategoryComboBox()
         {
-            foreach (var category in lbxCategories.Items)
-            {
-                cbCategory.Items.Add(category);
-            }
+            var categoryList = categoryController.GetCategories();
+            categoryList.ToList().ForEach(category => cbCategory.Items.Add(category.Name));
         }
 
         private void FillCategoryList()
         {
             lbxCategories.Items.Clear();
             var categoryList = categoryController.GetCategories();
-
-            foreach (var category in categoryList)
-            {
-                lbxCategories.Items.Add(category.Name);
-            }
+            categoryList.ToList().ForEach(category => lbxCategories.Items.Add(category.Name));
         }
 
         private void PopulateTextBoxes(int selectedRow)
@@ -90,18 +80,16 @@ namespace AutomateEverything
         private void dgPodcastFeed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lbxEpisodes.Items.Clear();
-            int selectedRow = dgPodcastFeed.CurrentRow.Index;
-            PopulateTextBoxes(selectedRow);
-            List<Episode> episodeList = episodeController.GetAllEpisodesFromPodcast(selectedRow);
+            int selectedPodcast = dgPodcastFeed.CurrentRow.Index;
+            PopulateTextBoxes(selectedPodcast);
+            var episodeList = episodeController.GetAllEpisodesFromPodcast(selectedPodcast);
             try
             {
-                foreach (Episode episode in episodeList)
-                {
-                    lbxEpisodes.Items.Add(episode.Name);
-                }
-                selectedPodcast = selectedRow;
+                episodeList.ToList().ForEach(episode => lbxEpisodes.Items.Add(episode.Name));
 
-                lblEpisodeList.Text = "Episodes for " + podcastController.GetPodcastName(selectedRow);
+                this.selectedPodcast = selectedPodcast;
+
+                lblEpisodeList.Text = "Episodes for " + podcastController.GetPodcastName(selectedPodcast);
             }
             catch (Exception)
             {
@@ -115,14 +103,11 @@ namespace AutomateEverything
             lblEpisodeDescription.Text = episodeName;
 
             string selectedEpisodeName = lbxEpisodes.SelectedItem.ToString();
-            List<Episode> episodeList = episodeController.GetAllEpisodesFromPodcast(selectedPodcast);
+            var episodeList = episodeController.GetAllEpisodesFromPodcast(selectedPodcast);
 
-            foreach (Episode episode in episodeList)
+            foreach (var episode in episodeList.Where(ep => ep.Name == selectedEpisodeName))
             {
-                if (selectedEpisodeName.Equals(episode.Name))
-                {
-                    txtEpisodeDescription.Text = episode.Description;
-                }
+                txtEpisodeDescription.Text = episode.Description;
             }
         }
 
@@ -132,9 +117,12 @@ namespace AutomateEverything
             int columnindex = dgPodcastFeed.CurrentCell.ColumnIndex;
             var podcastName = dgPodcastFeed.Rows[rowindex].Cells[columnindex].Value.ToString();
 
-            MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?");
-            podcastController.DeletePodcast(selectedPodcast);
-            FillPodcastList();
+            DialogResult res = MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                podcastController.DeletePodcast(selectedPodcast);
+                FillPodcastList();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -179,10 +167,14 @@ namespace AutomateEverything
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
             string categoryName = lbxCategories.SelectedItem.ToString();
-            MessageBox.Show("Are you sure you want to delete the category " + categoryName + "?");
-            categoryController.DeleteCategory(categoryName);
-            FillCategoryList();
-            txtCategory.Text = "";
+
+            DialogResult res = MessageBox.Show("Are you sure you want to delete the category " + categoryName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                categoryController.DeleteCategory(categoryName);
+                FillCategoryList();
+                txtCategory.Text = "";
+            }
         }
 
         private void ClearInputs()
@@ -191,11 +183,6 @@ namespace AutomateEverything
             txtName.Text = "";
             cbInterval.SelectedIndex = -1;
             cbCategory.SelectedIndex = -1;
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Console.WriteLine(DateTime.Now.ToString());
         }
     }
 }

@@ -50,11 +50,11 @@
             this.lblPodcastFeed = new System.Windows.Forms.Label();
             this.lblCategoryList = new System.Windows.Forms.Label();
             this.dgPodcastFeed = new System.Windows.Forms.DataGridView();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblNewCategory = new System.Windows.Forms.Label();
             this.Podcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Updateinterval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblNewCategory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -304,26 +304,6 @@
             this.dgPodcastFeed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             // 
-            // Podcast
-            // 
-            this.Podcast.HeaderText = "Podcast";
-            this.Podcast.Name = "Podcast";
-            this.Podcast.ReadOnly = true;
-            // 
-            // Updateinterval
-            // 
-            this.Updateinterval.HeaderText = "Updateinterval";
-            this.Updateinterval.MinimumWidth = 6;
-            this.Updateinterval.Name = "Updateinterval";
-            this.Updateinterval.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(380, 283);
@@ -343,6 +323,29 @@
             this.lblNewCategory.Size = new System.Drawing.Size(51, 14);
             this.lblNewCategory.TabIndex = 27;
             this.lblNewCategory.Text = "Category";
+            // 
+            // Podcast
+            // 
+            this.Podcast.HeaderText = "Podcast";
+            this.Podcast.Name = "Podcast";
+            this.Podcast.ReadOnly = true;
+            this.Podcast.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Updateinterval
+            // 
+            this.Updateinterval.HeaderText = "Updateinterval";
+            this.Updateinterval.MinimumWidth = 6;
+            this.Updateinterval.Name = "Updateinterval";
+            this.Updateinterval.ReadOnly = true;
+            this.Updateinterval.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MainWindow
             // 
@@ -408,11 +411,11 @@
         private System.Windows.Forms.Label lblPodcastFeed;
         private System.Windows.Forms.Label lblCategoryList;
         private System.Windows.Forms.DataGridView dgPodcastFeed;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblNewCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Podcast;
         private System.Windows.Forms.DataGridViewTextBoxColumn Updateinterval;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label lblNewCategory;
     }
 }
 
