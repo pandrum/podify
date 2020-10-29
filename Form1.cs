@@ -24,14 +24,14 @@ namespace AutomateEverything
             FillCategoryComboBox();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             string url = txtUrl.Text;
             string name = txtName.Text;
             string category = cbCategory.Text;
             int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
-            podcastController.AddNewPodcast(url, name, category, interval);
+            await podcastController.AddNewPodcast(url, name, category, interval);
             FillPodcastList();
             ClearInputs();
             MessageBox.Show("Podcast added!");
