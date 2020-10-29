@@ -11,7 +11,6 @@ namespace Model
 
         public Episode()
         {
-            //Woop
         }
     }
 }

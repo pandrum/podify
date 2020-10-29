@@ -32,7 +32,7 @@ namespace BL
 
         public List<Category> GetCategories()
         {
-            return categoryRepository.GetAllCategories();
+            return categoryRepository.GetAll();
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using Model;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DL.Repositories
 {
-    public class CategoryRepository
+    public class CategoryRepository : IRepository<Category>
+
     {
         public List<Category> categoryList;
         public CategoryDataManager categoryDataManager;
@@ -11,7 +14,7 @@ namespace DL.Repositories
         public CategoryRepository()
         {
             categoryDataManager = new CategoryDataManager();
-            categoryList = GetAllCategories();
+            categoryList = GetAll();
         }
 
         public void Create(Category category)
@@ -22,29 +25,21 @@ namespace DL.Repositories
 
         public void Update(string currentName, string newName)
         {
-            for (int i = 0; i < categoryList.Count; i++)
+            foreach (var category in categoryList.Where(c => c.Name == currentName))
             {
-                if (categoryList[i].Name.Equals(currentName))
-                {
-                    categoryList[i].Name = newName;
-                }
+                category.Name = newName;
             }
+
             saveChanges();
         }
 
         public void Delete(string categoryName)
         {
-            for (int i = 0; i < categoryList.Count; i++)
-            {
-                if (categoryList[i].Name.Equals(categoryName))
-                {
-                    categoryList.Remove(categoryList[i]);
-                }
-            }
+            categoryList.RemoveAll((c) => c.Name == categoryName);
             saveChanges();
         }
 
-        public List<Category> GetAllCategories()
+        public List<Category> GetAll()
         {
             return categoryDataManager.Deserialize();
         }

@@ -7,8 +7,8 @@ namespace DL.Repositories
     public class PodcastRepository : IRepository<Podcast>
 
     {
-        public List<Podcast> podcastList;
         public PodcastDataManager dataManager;
+        public List<Podcast> podcastList;
 
         public PodcastRepository()
         {
@@ -29,20 +29,13 @@ namespace DL.Repositories
             SaveChanges();
         }
 
-        public void SaveChanges()
+        public void Update(int index, Podcast podcast)
         {
-            dataManager.Serialize(podcastList);
-        }
-
-        public void UpdateList(Podcast podcast)
-        {
-            for (int i = 0; i < podcastList.Count; i++)
+            if (index >= 0)
             {
-                if (podcastList[i].Url.Equals(podcast.Url))
-                {
-                    podcastList[i] = podcast;
-                }
+                podcastList[index] = podcast;
             }
+
             SaveChanges();
         }
 
@@ -58,6 +51,11 @@ namespace DL.Repositories
                 Console.WriteLine("No list to return.");
             }
             return returnPodcastList;
+        }
+
+        public void SaveChanges()
+        {
+            dataManager.Serialize(podcastList);
         }
     }
 }

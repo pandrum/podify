@@ -1,7 +1,6 @@
 ﻿using Model;
 using DL.Repositories;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Linq;
 using System;
@@ -11,7 +10,6 @@ namespace BL
     public class PodcastController
     {
         private PodcastRepository podcastRepository;
-        private XDocument urlDocument = new XDocument();
 
         public PodcastController()
         {
@@ -58,25 +56,18 @@ namespace BL
             podcast.Name = name;
             podcast.Interval = Convert.ToInt32(interval);
             podcast.Category = category;
-            podcastRepository.UpdateList(podcast);
+            podcastRepository.Update(index, podcast);
         }
 
-        public async Task <Podcast> AddNewPodcast(string url, string name, string category, int interval)
+        public void AddNewPodcast(string url, string name, string category, int interval)
         {
-            Podcast podcast = new Podcast();
-            await Task.Run(() =>
-            {
-                List<Episode> episodes = GetEpisodesForPodcast(url);
-                Podcast p = new Podcast(url, name, category, interval, episodes);
+            var episodes = GetEpisodesForPodcast(url);
+            Podcast p = new Podcast(url, name, category, interval, episodes);
 
-                podcastRepository.Create(p);
-
-            });
-            return podcast;
-
+            podcastRepository.Create(p);
         }
 
-        public List<Podcast> GetAllPodcasts()
+        public List<Podcast> GetPodcasts()
         {
             return podcastRepository.GetAll();
         }
@@ -86,35 +77,21 @@ namespace BL
             podcastRepository.Delete(index);
         }
 
-        //public List<Episode> GetEpisodesForPodcast(string url)
-        //{
-        //    List<Episode> episodes = new List<Episode>();
-        //    XmlReader reader = XmlReader.Create(url);
-        //    SyndicationFeed feed = SyndicationFeed.Load(reader);
-
-        //    foreach (var item in feed.Items)
-        //    {
-        //        Episode episode = new Episode();
-        //        episode.Name = item.Title.Text;
-        //        episode.Description = item.Summary.Text;
-        //        episodes.Add(episode);
-        //    }
-        //    return episodes;
-        //}
-
         public List<Episode> GetEpisodesForPodcast(string url)
         {
-            List<Episode> episodeList = new List<Episode>();
+            List<Episode> episode = new List<Episode>();
+            XDocument urlDocument = new XDocument();
+
             {
                 urlDocument = XDocument.Load(url);
-                episodeList = (from x in urlDocument.Descendants("item")
-                               select new Episode
-                               {
-                                   Name = x.Element("title").Value,
-                                   Description = x.Element("description").Value
-                               }).ToList();
+                episode = (from x in urlDocument.Descendants("item")
+                           select new Episode
+                           {
+                               Name = x.Element("title").Value,
+                               Description = x.Element("description").Value
+                           }).ToList();
             };
-            return episodeList;
+            return episode;
         }
     }
 }
