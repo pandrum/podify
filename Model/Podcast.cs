@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace Model
@@ -11,6 +13,7 @@ namespace Model
         public string Name { get; set; }
         public string Category { get; set; }
         public int Interval { get; set; }
+        public DateTime NextUpdate { get; set; }
         public List<Episode> Episodes { get; set; }
 
         public Podcast(string url, string name, string category, int interval, List<Episode> episodes)
@@ -24,6 +27,32 @@ namespace Model
 
         public Podcast()
         {
+        }
+
+        public bool NeedsUpdate
+        {
+            get
+            {
+                return NextUpdate <= DateTime.Now;
+            }
+        }
+
+        public void Update()
+        {
+            NextUpdate = DateTime.Now.AddMinutes(Interval);
+            XDocument urlDocument = new XDocument();
+
+            {
+                urlDocument = XDocument.Load(Url);
+                Episodes = (from x in urlDocument.Descendants("item")
+                            select new Episode
+                            {
+                                Name = x.Element("title").Value,
+                                Description = x.Element("description").Value
+                            }).ToList();
+                Console.WriteLine("Next update is at " + NextUpdate);
+                Console.WriteLine("Podcast: " + Name + " updated at " + DateTime.Now);
+            };
         }
     }
 }

@@ -68,15 +68,15 @@ namespace DL.Repositories
             return returnPodcastList;
         }
 
-        public void SaveChanges()
-        {
-            dataManager.Serialize(podcastList);
-        }
-
         public override void GetNumberOfItems()
         {
             var items = podcastList.Count;
-            System.Console.WriteLine("The CategoryRepository has this many items in store: " + items);
+            Console.WriteLine("The CategoryRepository has this many items in store: " + items);
+        }
+
+        public void SaveChanges()
+        {
+            dataManager.Serialize(podcastList);
         }
     }
 }
