@@ -95,19 +95,24 @@ namespace BL
 
         public List<Episode> GetEpisodesForPodcast(string url)
         {
-            List<Episode> episode = new List<Episode>();
+            List<Episode> episodes = new List<Episode>();
             XDocument urlDocument = new XDocument();
 
             {
                 urlDocument = XDocument.Load(url);
-                episode = (from x in urlDocument.Descendants("item")
-                           select new Episode
-                           {
-                               Name = x.Element("title").Value,
-                               Description = x.Element("description").Value
-                           }).ToList();
+                episodes = (from x in urlDocument.Descendants("item")
+                            select new Episode
+                            {
+                                Name = x.Element("title").Value,
+                                Description = x.Element("description").Value
+                            }).ToList();
             };
-            return episode;
+            return episodes;
+        }
+
+        public void UpdatePodcastEpisodes()
+        {
+            //
         }
     }
 }
