@@ -31,16 +31,21 @@ namespace AutomateEverything
 
         private async void btnAddNewPodcast_Click(object sender, EventArgs e)
         {
-            string url = txtUrl.Text;
-            string name = txtName.Text;
-            string category = cbCategory.Text;
-            int interval = Convert.ToInt32(cbInterval.SelectedItem);
+            if (validator.CheckTextField(txtUrl, txtName))
+                
+            {
 
-            await podcastController.AddNewPodcast(url, name, category, interval);
-            FillPodcastList();
-            ClearInputs();
-            MessageBox.Show("Podcast added!");
+                string url = txtUrl.Text;
+                string name = txtName.Text;
+                string category = cbCategory.Text;
+                int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
+                await podcastController.AddNewPodcast(url, name, category, interval);
+                FillPodcastList();
+                ClearInputs();
+                MessageBox.Show("Podcast added!");
+
+            }
 
         }
 
@@ -141,13 +146,16 @@ namespace AutomateEverything
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            string categoryName = txtCategory.Text;
-            Category category = new Category(categoryName);
-            categoryController.AddNewCategory(category);
-            FillCategoryList();
-            FillCategoryComboBox();
-            txtCategory.Text = "";
-            MessageBox.Show("New category added!");
+            
+                string categoryName = txtCategory.Text;
+                Category category = new Category(categoryName);
+                categoryController.AddNewCategory(category);
+                FillCategoryList();
+                FillCategoryComboBox();
+                txtCategory.Text = "";
+                MessageBox.Show("New category added!");
+
+            
         }
 
         private void btnUpdateCategory_Click(object sender, EventArgs e)

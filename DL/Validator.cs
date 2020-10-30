@@ -36,6 +36,17 @@ namespace DL
 
             }
 
+        public bool TboxCategoryHasValue(TextBox category)
+        {
+            bool isValid = true;
+            if (category.Text == (""))
+            {
+                MessageBox.Show("You must write something in the field!");
+                isValid = false;
+            }
+            return isValid;
+        }
+
         public bool DoesCategoryListExist(List<string> categoryList, bool message)
         {
             bool doesExist = true;
@@ -92,6 +103,24 @@ namespace DL
                 return true;
             }
         }
+
+        public bool CheckTextField(params TextBox [] textboxes)
+        {
+            bool isValid = true;
+            foreach(var textbox in textboxes)
+            {
+                if (textbox.Text == "");
+                isValid = false;
+                MessageBox.Show("Du måste fylla i alla textrutor");
+
+            }
+
+            return isValid;
+
+        }
+
+
+
     }
 
 
