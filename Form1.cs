@@ -1,5 +1,5 @@
 ﻿using BL;
-using DL.Repositories;
+using DL;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -44,22 +44,28 @@ namespace AutomateEverything
             string category = cbCategory.Text;
             int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
-            await podcastController.AddNewPodcast(url, name, category, interval);
-            FillPodcastList();
-            ClearInputs();
-            MessageBox.Show("Podcast added!");
+            if (Validator.CheckTextField(txtUrl, txtName) && Validator.CheckCombobox(cbCategory, cbInterval) && Validator.CheckIfValidURL(url))
+            {
+                await podcastController.AddNewPodcast(url, name, category, interval);
+                FillPodcastList();
+                ClearInputs();
+                MessageBox.Show("Podcast added!");
+            }
         }
 
         private void btnUpdatePodcast_Click(object sender, EventArgs e)
         {
-            string url = txtUrl.Text;
-            string name = txtName.Text;
-            string interval = cbInterval.Text;
-            string category = cbCategory.Text;
+            if (Validator.CheckTextField(txtUrl, txtName))
+            {
+                string url = txtUrl.Text;
+                string name = txtName.Text;
+                string interval = cbInterval.Text;
+                string category = cbCategory.Text;
 
-            podcastController.UpdateAllPodcastInfo(selectedPodcast, url, name, interval, category);
-            FillPodcastList();
-            MessageBox.Show("Selected podcast updated!");
+                podcastController.UpdateAllPodcastInfo(selectedPodcast, url, name, interval, category);
+                FillPodcastList();
+                MessageBox.Show("Selected podcast updated!");
+            }
         }
 
         private void btnDeletePodcast_Click(object sender, EventArgs e)
@@ -68,8 +74,8 @@ namespace AutomateEverything
             int columnindex = dgPodcastFeed.CurrentCell.ColumnIndex;
             var podcastName = dgPodcastFeed.Rows[rowindex].Cells[columnindex].Value.ToString();
 
-            DialogResult res = MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
+            DialogResult response = MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (response == DialogResult.OK)
             {
                 podcastController.DeletePodcast(selectedPodcast);
                 FillPodcastList();
@@ -81,49 +87,60 @@ namespace AutomateEverything
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string categoryName = txtCategory.Text;
-            Category category = new Category(categoryName);
-            categoryController.AddNewCategory(category);
-            FillCategoryList();
-            FillCategoryComboBox();
-            txtCategory.Text = string.Empty;
-            MessageBox.Show("New category added!");
+            if (Validator.CheckCategory(txtCategory))
+            {
+                Category category = new Category(categoryName);
+                categoryController.AddNewCategory(category);
+                FillCategoryList();
+                FillCategoryComboBox();
+                txtCategory.Text = string.Empty;
+                MessageBox.Show("New category added!");
+            }
         }
 
         private void btnUpdateCategory_Click(object sender, EventArgs e)
         {
-            try
+            if (Validator.CheckCategory(txtCategory))
             {
-                string currentName = lbxCategories.SelectedItem.ToString();
-                string newName = txtCategory.Text;
+                try
+                {
+                    string currentName = lbxCategories.SelectedItem.ToString();
+                    string newName = txtCategory.Text;
 
-                podcastController.UpdatePodcastCategory(currentName, newName);
-                categoryController.UpdateCategoryName(currentName, newName);
+                    podcastController.UpdatePodcastCategory(currentName, newName);
+                    categoryController.UpdateCategoryName(currentName, newName);
 
-                FillPodcastList();
-                FillCategoryList();
-                FillCategoryComboBox();
-                txtCategory.Text = string.Empty;
-                MessageBox.Show("Category updated!");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Out of bounds for categories!");
+                    FillPodcastList();
+                    FillCategoryList();
+                    FillCategoryComboBox();
+                    txtCategory.Text = string.Empty;
+                    MessageBox.Show("Category updated!");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Out of bounds for categories!");
+                }
             }
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            string categoryName = lbxCategories.SelectedItem?.ToString();
-
-            DialogResult res = MessageBox.Show("Are you sure you want to delete the category " + categoryName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
+            if (Validator.CheckIfCategoryItemSelected(lbxCategories))
             {
-                categoryController.DeleteCategory(categoryName);
-                podcastController.DeletePodcastByCategory(categoryName);
-                FillPodcastList();
-                FillCategoryList();
-                FillCategoryComboBox();
-                txtCategory.Text = string.Empty;
+                string categoryName = lbxCategories.SelectedItem?.ToString();
+
+                DialogResult res = MessageBox.Show("Are you sure you want to delete the category " + categoryName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+                    categoryController.DeleteCategory(categoryName);
+                    podcastController.DeletePodcastByCategory(categoryName);
+                    FillPodcastList();
+                    FillCategoryList();
+                    FillCategoryComboBox();
+                    txtCategory.Text = string.Empty;
+                    ClearEpisodesList();
+                    ClearInputs();
+                }
             }
         }
 
@@ -165,7 +182,7 @@ namespace AutomateEverything
 
             foreach (var podcast in podcastList.Where(p => p.Category == selectedCategory))
             {
-                dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category);
+                dgPodcastFeed.Rows.Add(podcast.TotalEpisodes, podcast.Name, podcast.Interval, podcast.Category);
             }
         }
 
@@ -205,7 +222,7 @@ namespace AutomateEverything
             dgPodcastFeed.Rows.Clear();
             dgPodcastFeed.Refresh();
             var podcastList = podcastController.GetPodcasts();
-            podcastList.ToList().ForEach(podcast => dgPodcastFeed.Rows.Add(podcast.Name, podcast.Interval, podcast.Category));
+            podcastList.ToList().ForEach(podcast => dgPodcastFeed.Rows.Add(podcast.TotalEpisodes, podcast.Name, podcast.Interval, podcast.Category));
         }
 
         private void FillCategoryComboBox()

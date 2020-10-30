@@ -1,68 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.ServiceModel.Syndication;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace DL
 {
     public class Validator
     {
-        
-        public bool IntervalHasValue(ComboBox interval)
-        {
-            bool isValid = true;
-            if (interval.SelectedItem == null)
-            {
-
-                MessageBox.Show("You must choose an interval!");
-                isValid = false;
-            }
-
-            return isValid;
-        }
-           
-         public bool CategoryHasValue(ComboBox category)
-            {
-                bool isValid = true;
-                if (category.SelectedItem == null)
-                {
-                    isValid = false;
-                }
-
-                return isValid;
-
-            }
-
-        public bool TboxCategoryHasValue(TextBox category)
-        {
-            bool isValid = true;
-            if (category.Text == (""))
-            {
-                MessageBox.Show("You must write something in the field!");
-                isValid = false;
-            }
-            return isValid;
-        }
-
-        public bool DoesCategoryListExist(List<string> categoryList, bool message)
-        {
-            bool doesExist = true;
-            if (categoryList.Count == 0)
-            {
-                doesExist = false;
-                if (message)
-                {
-                    MessageBox.Show("You don't have any categories..");
-                }
-            }
-
-            return doesExist;
-        }
-
-        public bool CheckIfValidFeed(string url)
+        public static bool CheckIfValidURL(string url)
         {
             try
             {
@@ -70,63 +20,94 @@ namespace DL
 
                 foreach (SyndicationItem item in feed.Items)
                 {
-                    Debug.Print(item.Title.Text);
+                    continue;
                 }
                 return true;
             }
             catch (Exception)
             {
+                MessageBox.Show("Not a valid URL.");
                 return false;
             }
         }
 
-        public bool CheckIfcomboBoxHasASelectedItem(string comboAndTextboxName)
-        {
-            if (string.IsNullOrEmpty(comboAndTextboxName))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        public bool CheckIfItemInListAlreadyExists(List<string> klist, string name)
-        {
-            List<string> KListString = klist;
-            if (KListString.Contains(name) == true)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public bool CheckTextField(params TextBox [] textboxes)
+        public static bool CheckTextField(params TextBox[] textBoxes)
         {
             bool isValid = true;
-            foreach(var textbox in textboxes)
+            foreach (var textbox in textBoxes)
             {
-                if (textbox.Text == "");
-                isValid = false;
-                MessageBox.Show("Du måste fylla i alla textrutor");
-
+                if (textbox.Text == "")
+                {
+                    isValid = false;
+                }
             }
 
+            if (!isValid)
+            {
+                MessageBox.Show("You must enter a URL and a name for the podcast.");
+            }
             return isValid;
-
         }
 
+        public static bool CheckCategory(TextBox category)
+        {
+            bool isValid = true;
+            if (category.Text == "")
+            {
+                isValid = false;
+            }
 
+            if (!isValid)
+            {
+                MessageBox.Show("You must enter a name for the category.");
+            }
+            return isValid;
+        }
 
+        public static bool CheckCombobox(params ComboBox[] comboBoxes)
+        {
+            bool isValid = true;
+            foreach (var combobox in comboBoxes)
+            {
+                if (combobox.SelectedIndex == -1)
+                {
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show("You must select an item in the combobox.");
+            }
+            return isValid;
+        }
+
+        public static bool CheckIfCategoryItemSelected(ListBox listbox)
+        {
+            bool isValid = true;
+            if (listbox.SelectedIndex == -1)
+            {
+                isValid = false;
+            }
+            if (!isValid)
+            {
+                MessageBox.Show("You must select an item in the categorylist to delete first.");
+            }
+            return isValid;
+        }
+
+        public static bool CheckIfPodcastItemSelected(DataGridViewRow dataGridViewRow)
+        {
+            bool isValid = true;
+            if (dataGridViewRow.Index == -1)
+            {
+                isValid = false;
+            }
+            if (!isValid)
+            {
+                MessageBox.Show("You must select an item in the podcastlist to delete first.");
+            }
+            return isValid;
+        }
     }
-
-
-
-
 }
-
-
-
