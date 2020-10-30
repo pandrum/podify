@@ -1,4 +1,5 @@
 ﻿using BL;
+using DL;
 using DL.Repositories;
 using Model;
 using System;
@@ -13,6 +14,7 @@ namespace AutomateEverything
         private PodcastController podcastController;
         private EpisodeController episodeController;
         private CategoryController categoryController;
+        private Validator validator;
         private int selectedPodcast = 0;
 
         public MainWindow()
@@ -21,6 +23,7 @@ namespace AutomateEverything
             podcastController = new PodcastController();
             episodeController = new EpisodeController();
             categoryController = new CategoryController();
+            validator = new Validator();
             FillPodcastList();
             FillCategoryList();
             FillCategoryComboBox();
@@ -37,6 +40,8 @@ namespace AutomateEverything
             FillPodcastList();
             ClearInputs();
             MessageBox.Show("Podcast added!");
+
+
         }
 
         private void FillPodcastList()

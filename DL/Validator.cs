@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.ServiceModel.Syndication;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace DL
 {
     public class Validator
     {
-        //private PodcastController podcastController;
-        //public EpisodeController episodeController = new EpisodeController();
-       //public CategoryController categoryController = new CategoryController();
-
-        public Validator ()
-        {
-           // podcastController = new PodcastController();
-
-        }
+        
         public bool IntervalHasValue(ComboBox interval)
-        {   
+        {
             bool isValid = true;
             if (interval.SelectedItem == null)
             {
@@ -27,14 +22,82 @@ namespace DL
             }
 
             return isValid;
+        }
+           
+         public bool CategoryHasValue(ComboBox category)
+            {
+                bool isValid = true;
+                if (category.SelectedItem == null)
+                {
+                    isValid = false;
+                }
 
+                return isValid;
 
-            // Kolla om url är korrekt ifylld 
+            }
 
+        public bool DoesCategoryListExist(List<string> categoryList, bool message)
+        {
+            bool doesExist = true;
+            if (categoryList.Count == 0)
+            {
+                doesExist = false;
+                if (message)
+                {
+                    MessageBox.Show("You don't have any categories..");
+                }
+            }
 
-            // Kolla om url har tilldelats ett namn 
-
+            return doesExist;
         }
 
+        public bool CheckIfValidFeed(string url)
+        {
+            try
+            {
+                SyndicationFeed feed = SyndicationFeed.Load(XmlReader.Create(url));
+
+                foreach (SyndicationItem item in feed.Items)
+                {
+                    Debug.Print(item.Title.Text);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool CheckIfcomboBoxHasASelectedItem(string comboAndTextboxName)
+        {
+            if (string.IsNullOrEmpty(comboAndTextboxName))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool CheckIfItemInListAlreadyExists(List<string> klist, string name)
+        {
+            List<string> KListString = klist;
+            if (KListString.Contains(name) == true)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
+
+
+
+
 }
+
+
+
