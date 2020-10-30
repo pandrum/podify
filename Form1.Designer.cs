@@ -116,6 +116,7 @@
             this.cbInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInterval.FormattingEnabled = true;
             this.cbInterval.Items.AddRange(new object[] {
+            "1",
             "5",
             "10",
             "15"});
