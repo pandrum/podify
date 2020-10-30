@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon>podcast.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,5 +13,4 @@
     <ProjectReference Include="..\DL\DL.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
-
 </Project>

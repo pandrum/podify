@@ -7,7 +7,7 @@
     <ProjectGuid>{75711883-0791-4007-B736-59AA4D83888D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>AutomateEverything</RootNamespace>
-    <AssemblyName>AutomateEverything</AssemblyName>
+    <AssemblyName>Podify</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,8 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>podcast.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -107,6 +106,9 @@
       <Project>{84456662-1339-4BEE-8565-BE1964C0222F}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="podcast.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
