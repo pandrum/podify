@@ -51,17 +51,7 @@ namespace DL
 
         public static bool CheckCategory(TextBox category)
         {
-            bool isValid = true;
-            if (category.Text == "")
-            {
-                isValid = false;
-            }
-
-            if (!isValid)
-            {
-                MessageBox.Show("You must enter a name for the category.");
-            }
-            return isValid;
+            return false;
         }
 
         public static bool CheckCombobox(params ComboBox[] comboBoxes)
@@ -84,30 +74,7 @@ namespace DL
 
         public static bool CheckIfCategoryItemSelected(ListBox listbox)
         {
-            bool isValid = true;
-            if (listbox.SelectedIndex == -1)
-            {
-                isValid = false;
-            }
-            if (!isValid)
-            {
-                MessageBox.Show("You must select an item in the categorylist to delete first.");
-            }
-            return isValid;
-        }
-
-        public static bool CheckIfPodcastItemSelected(DataGridViewRow dataGridViewRow)
-        {
-            bool isValid = true;
-            if (dataGridViewRow.Index == -1)
-            {
-                isValid = false;
-            }
-            if (!isValid)
-            {
-                MessageBox.Show("You must select an item in the podcastlist to delete first.");
-            }
-            return isValid;
+            return false;
         }
     }
 }
