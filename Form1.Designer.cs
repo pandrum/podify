@@ -52,13 +52,13 @@
             this.lblPodcastFeed = new System.Windows.Forms.Label();
             this.lblCategoryList = new System.Windows.Forms.Label();
             this.dgPodcastFeed = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblNewCategory = new System.Windows.Forms.Label();
-            this.lblEpisodeDescription = new System.Windows.Forms.Label();
             this.TotalEpisodes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Podcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblNewCategory = new System.Windows.Forms.Label();
+            this.lblEpisodeDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPodcastFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,9 +123,8 @@
             this.cbInterval.FormattingEnabled = true;
             this.cbInterval.Items.AddRange(new object[] {
             "1",
-            "5",
-            "10",
-            "15"});
+            "2",
+            "3"});
             this.cbInterval.Location = new System.Drawing.Point(290, 260);
             this.cbInterval.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbInterval.Name = "cbInterval";
@@ -335,6 +334,36 @@
             this.dgPodcastFeed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             // 
+            // TotalEpisodes
+            // 
+            this.TotalEpisodes.HeaderText = "Total Episodes";
+            this.TotalEpisodes.Name = "TotalEpisodes";
+            this.TotalEpisodes.ReadOnly = true;
+            this.TotalEpisodes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Podcast
+            // 
+            this.Podcast.HeaderText = "Podcast";
+            this.Podcast.Name = "Podcast";
+            this.Podcast.ReadOnly = true;
+            this.Podcast.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Interval
+            // 
+            this.Interval.HeaderText = "Interval";
+            this.Interval.MinimumWidth = 6;
+            this.Interval.Name = "Interval";
+            this.Interval.ReadOnly = true;
+            this.Interval.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(412, 286);
@@ -367,36 +396,6 @@
             this.lblEpisodeDescription.Name = "lblEpisodeDescription";
             this.lblEpisodeDescription.Size = new System.Drawing.Size(0, 18);
             this.lblEpisodeDescription.TabIndex = 17;
-            // 
-            // TotalEpisodes
-            // 
-            this.TotalEpisodes.HeaderText = "Total Episodes";
-            this.TotalEpisodes.Name = "TotalEpisodes";
-            this.TotalEpisodes.ReadOnly = true;
-            this.TotalEpisodes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Podcast
-            // 
-            this.Podcast.HeaderText = "Podcast";
-            this.Podcast.Name = "Podcast";
-            this.Podcast.ReadOnly = true;
-            this.Podcast.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Interval
-            // 
-            this.Interval.HeaderText = "Interval";
-            this.Interval.MinimumWidth = 6;
-            this.Interval.Name = "Interval";
-            this.Interval.ReadOnly = true;
-            this.Interval.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MainWindow
             // 

@@ -13,7 +13,6 @@ namespace Model
         public string Name { get; set; }
         public string Category { get; set; }
         public int Interval { get; set; }
-        public DateTime NextUpdate { get; set; }
         public List<Episode> Episodes { get; set; }
         public int TotalEpisodes { get; set; }
 
@@ -24,46 +23,11 @@ namespace Model
             Category = category;
             Interval = interval;
             Episodes = episodes;
-            CountEpisodes();
+            TotalEpisodes = Episodes.Count;
         }
 
         public Podcast()
         {
-        }
-
-        private void CountEpisodes()
-        {
-            foreach (var i in Episodes)
-            {
-                TotalEpisodes++;
-            }
-        }
-
-        public bool NeedsUpdate
-        {
-            get
-            {
-                return NextUpdate <= DateTime.Now;
-            }
-        }
-
-        public void Update()
-        {
-            NextUpdate = DateTime.Now.AddMinutes(Interval);
-            XDocument urlDocument = new XDocument();
-
-            {
-                urlDocument = XDocument.Load(Url);
-                Episodes = (from x in urlDocument.Descendants("item")
-                            select new Episode
-                            {
-                                Name = x.Element("title").Value,
-                                Description = x.Element("description").Value
-                            }).ToList();
-                Console.WriteLine("Next update is at " + NextUpdate);
-                Console.WriteLine("Podcast: " + Name + " updated at " + DateTime.Now);
-            };
-            CountEpisodes();
         }
     }
 }

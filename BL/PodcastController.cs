@@ -11,10 +11,12 @@ namespace BL
     public class PodcastController
     {
         private PodcastRepository podcastRepository;
+        private List<Podcast> podcastList;
 
         public PodcastController()
         {
             podcastRepository = new PodcastRepository();
+            podcastList = podcastRepository.GetAll();
         }
 
         public string GetPodcastUrl(int index)
@@ -110,9 +112,15 @@ namespace BL
             return episodes;
         }
 
-        public void UpdatePodcastEpisodes()
+        public void CheckForNewEpisodes(string url)
         {
-            //
+            Console.WriteLine("podcastController");
+            var newEpisodes = GetEpisodesForPodcast(url);
+            foreach (var item in newEpisodes)
+            {
+                Console.WriteLine(item.Name);
+            }
+            podcastRepository.UpdatePodcastEpisodes(url, newEpisodes);
         }
     }
 }

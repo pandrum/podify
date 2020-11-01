@@ -26,8 +26,11 @@ namespace DL.Repositories
 
         public void Delete(int index)
         {
-            podcastList.RemoveAt(index);
-            SaveChanges();
+            if (index >= 0)
+            {
+                podcastList.RemoveAt(index);
+                SaveChanges();
+            }
         }
 
         public void DeletePodcastsByCategory(string categoryName)
@@ -50,6 +53,16 @@ namespace DL.Repositories
             foreach (var podcast in podcastList.Where(p => p.Category == currentName))
             {
                 podcast.Category = newName;
+            }
+            SaveChanges();
+        }
+
+        public void UpdatePodcastEpisodes(string url, List<Episode> newEpisodes)
+        {
+            Console.WriteLine("PodcastRepo");
+            foreach (var podcast in podcastList.Where(p => p.Url.Equals(url)))
+            {
+                podcast.Episodes = newEpisodes;
             }
             SaveChanges();
         }

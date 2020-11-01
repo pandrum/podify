@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace AutomateEverything
@@ -14,7 +15,6 @@ namespace AutomateEverything
         private PodcastController podcastController;
         private EpisodeController episodeController;
         private CategoryController categoryController;
-        private Timer timer;
         private int selectedPodcast = 0;
         private List<Podcast> podcasts;
 
@@ -24,17 +24,11 @@ namespace AutomateEverything
             podcastController = new PodcastController();
             episodeController = new EpisodeController();
             categoryController = new CategoryController();
-            timer = new Timer();
-            podcasts = GetAllPodcasts();
+            podcasts = podcastController.GetPodcasts();
             FillPodcastList();
             FillCategoryList();
             FillCategoryComboBox();
-            InitTimer();
-        }
-
-        private List<Podcast> GetAllPodcasts()
-        {
-            return podcastController.GetPodcasts();
+            InitTimers();
         }
 
         private async void btnAddNewPodcast_Click(object sender, EventArgs e)
@@ -49,6 +43,7 @@ namespace AutomateEverything
                 await podcastController.AddNewPodcast(url, name, category, interval);
                 FillPodcastList();
                 ClearInputs();
+                StartTimer(url, interval);
                 MessageBox.Show("Podcast added!");
             }
         }
@@ -186,20 +181,64 @@ namespace AutomateEverything
             }
         }
 
-        private void InitTimer()
+        private void InitTimers()
         {
-            timer.Interval = 1000;
+            int interval = 0;
+            foreach (var podcast in podcasts)
+            {
+                var timer = new Timer();
+
+                timer.Tag = podcast.Url;
+                if (podcast.Interval == 1)
+                {
+                    interval = 60000;
+                }
+                if (podcast.Interval == 2)
+                {
+                    interval = 120000;
+                }
+                if (podcast.Interval == 3)
+                {
+                    interval = 180000;
+                }
+                timer.Interval = interval;
+                timer.Tag = podcast.Url;
+                timer.Enabled = true;
+                timer.Tick += Timer_Tick;
+                timer.Start();
+            }
+        }
+
+        private void StartTimer(string url, int interval)
+        {
+            var timer = new Timer();
+            if (interval == 1)
+            {
+                interval = 60000;
+            }
+            if (interval == 2)
+            {
+                interval = 120000;
+            }
+            if (interval == 3)
+            {
+                interval = 180000;
+            }
+            timer.Interval = interval;
+            timer.Tag = url;
+            timer.Enabled = true;
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            foreach (var podcast in podcasts.Where(p => p.NeedsUpdate))
-            {
-                podcast.Update();
-                FillPodcastList();
-            }
+            Timer timer = (Timer)sender;
+            string url = (string)timer.Tag;
+            podcastController.CheckForNewEpisodes(url);
+            dgPodcastFeed.Rows.Clear();
+            FillPodcastList();
+            Console.WriteLine("Executed");
         }
 
         private void PopulateTextBoxes(int selectedRow)
