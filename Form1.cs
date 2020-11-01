@@ -82,7 +82,7 @@ namespace AutomateEverything
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string categoryName = txtCategory.Text;
-            if  (Validator.CheckCategoryIsNotEmpty(txtCategory))
+            if (Validator.CheckCategoryIsNotEmpty(txtCategory))
             {
                 Category category = new Category(categoryName);
                 categoryController.AddNewCategory(category);
@@ -237,6 +237,7 @@ namespace AutomateEverything
             string url = (string)timer.Tag;
             podcastController.CheckForNewEpisodes(url);
             dgPodcastFeed.Rows.Clear();
+            podcasts = podcastController.GetPodcasts();
             FillPodcastList();
             Console.WriteLine("Executed");
         }
@@ -290,11 +291,6 @@ namespace AutomateEverything
         {
             lbxEpisodes.Items.Clear();
             txtEpisodeDescription.Text = string.Empty;
-        }
-
-        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
