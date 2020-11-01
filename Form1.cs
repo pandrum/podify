@@ -82,7 +82,7 @@ namespace AutomateEverything
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string categoryName = txtCategory.Text;
-            if (Validator.CheckCategory(txtCategory))
+            if  (Validator.CheckCategoryIsNotEmpty(txtCategory))
             {
                 Category category = new Category(categoryName);
                 categoryController.AddNewCategory(category);
@@ -95,7 +95,7 @@ namespace AutomateEverything
 
         private void btnUpdateCategory_Click(object sender, EventArgs e)
         {
-            if (Validator.CheckCategory(txtCategory))
+            if (Validator.CheckCategoryIsNotEmpty(txtCategory) && Validator.CheckIfCategoryItemSelected(lbxCategories))
             {
                 try
                 {
@@ -290,6 +290,11 @@ namespace AutomateEverything
         {
             lbxEpisodes.Items.Clear();
             txtEpisodeDescription.Text = string.Empty;
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

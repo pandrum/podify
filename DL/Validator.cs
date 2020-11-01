@@ -49,9 +49,15 @@ namespace DL
             return isValid;
         }
 
-        public static bool CheckCategory(TextBox category)
+        public static bool CheckCategoryIsNotEmpty(TextBox category)
         {
-            return false;
+            bool isEmpty = true;
+            if (category.Text == "")
+            {
+                MessageBox.Show("You must fill in a category");
+                isEmpty = false;
+            }
+            return isEmpty;
         }
 
         public static bool CheckCombobox(params ComboBox[] comboBoxes)
@@ -74,7 +80,20 @@ namespace DL
 
         public static bool CheckIfCategoryItemSelected(ListBox listbox)
         {
-            return false;
+
+            bool isValider = true;
+            if (listbox.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must select an item in the listbox");
+                isValider = false;
+            }
+
+
+            return isValider;
+
+
         }
+
+
     }
 }
