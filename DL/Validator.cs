@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DL.Exceptions;
+using System;
 using System.ServiceModel.Syndication;
 using System.Windows.Forms;
 using System.Xml;
@@ -38,14 +39,13 @@ namespace DL
                     if (podcast.Url.Equals(url))
                     {
                         isValid = false;
-                        throw new CustomException();
+                        throw new DuplicateException();
                     }
                     isValid = true;
                 }
             }
-            catch (CustomException)
+            catch (DuplicateException)
             {
-                MessageBox.Show("Podcast already added to feed.");
                 isValid = false;
             }
             return isValid;
@@ -63,14 +63,13 @@ namespace DL
                     if (category.Name.Equals(name))
                     {
                         isValid = false;
-                        throw new CustomException();
+                        throw new DuplicateException();
                     }
                     isValid = true;
                 }
             }
-            catch (CustomException)
+            catch (DuplicateException)
             {
-                MessageBox.Show("Podcast already added to feed.");
                 isValid = false;
             }
             return isValid;
@@ -79,30 +78,43 @@ namespace DL
         public static bool CheckTextField(params TextBox[] textBoxes)
         {
             bool isValid = true;
-            foreach (var textbox in textBoxes)
+            try
             {
-                if (textbox.Text == "")
+                foreach (var textbox in textBoxes)
                 {
-                    isValid = false;
+                    if (textbox.Text == "")
+                    {
+                        isValid = false;
+                    }
+                }
+                if (!isValid)
+                {
+                    throw new EmptyTextFieldException("Fill in Name and URL for the podcast.");
                 }
             }
-
-            if (!isValid)
+            catch (EmptyTextFieldException)
             {
-                MessageBox.Show("You must enter a URL or a Name for the podcast.");
+                isValid = false;
             }
             return isValid;
         }
 
         public static bool CheckCategoryIsNotEmpty(TextBox category)
         {
-            bool isEmpty = true;
-            if (category.Text == "")
+            bool isValid = true;
+            try
             {
-                MessageBox.Show("You must fill in a category");
-                isEmpty = false;
+                if (category.Text == "")
+                {
+                    isValid = false;
+                    throw new EmptyTextFieldException("Category is empty.");
+                }
             }
-            return isEmpty;
+            catch (EmptyTextFieldException)
+            {
+                isValid = false;
+            }
+            return isValid;
         }
 
         public static bool CheckCombobox(params ComboBox[] comboBoxes)
@@ -125,14 +137,13 @@ namespace DL
 
         public static bool CheckIfCategoryItemSelected(ListBox listbox)
         {
-            bool isValider = true;
+            bool isValid = true;
             if (listbox.SelectedIndex == -1)
             {
                 MessageBox.Show("You must select an item in the listbox");
-                isValider = false;
+                isValid = false;
             }
-
-            return isValider;
+            return isValid;
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using BL;
 using DL;
+using DL.Exceptions;
 using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace AutomateEverything
@@ -40,11 +40,18 @@ namespace AutomateEverything
 
             if (Validator.CheckTextField(txtUrl, txtName) && Validator.CheckCombobox(cbCategory, cbInterval) && Validator.CheckIfValidURL(url) && Validator.CheckDuplicatePodcast(url))
             {
-                await podcastController.AddNewPodcast(url, name, category, interval);
-                FillPodcastList();
-                ClearInputs();
-                StartTimer(url, interval);
-                MessageBox.Show("Podcast added!");
+                try
+                {
+                    await podcastController.AddNewPodcast(url, name, category, interval);
+                    FillPodcastList();
+                    ClearInputs();
+                    StartTimer(url, interval);
+                    MessageBox.Show("Podcast added!");
+                }
+                catch (EmptyTextFieldException)
+                {
+                    throw;
+                }
             }
         }
 
@@ -163,7 +170,7 @@ namespace AutomateEverything
             string selectedEpisodeName = lbxEpisodes.SelectedItem.ToString();
             var episodeList = episodeController.GetAllEpisodesFromPodcast(selectedPodcast);
 
-            foreach (var episode in episodeList.Where(ep => ep.Name == selectedEpisodeName))
+            foreach (var episode in episodeList.Where(ep => ep.Name.Equals(selectedEpisodeName)))
             {
                 txtEpisodeDescription.Text = episode.Description;
             }
@@ -175,7 +182,7 @@ namespace AutomateEverything
             var selectedCategory = lbxCategories.SelectedItem?.ToString();
             var podcastList = podcastController.GetPodcasts();
 
-            foreach (var podcast in podcastList.Where(p => p.Category == selectedCategory))
+            foreach (var podcast in podcastList.Where(p => p.Category.Equals(selectedCategory)))
             {
                 dgPodcastFeed.Rows.Add(podcast.TotalEpisodes, podcast.Name, podcast.Interval, podcast.Category);
             }

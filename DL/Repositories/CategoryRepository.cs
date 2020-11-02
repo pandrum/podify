@@ -25,7 +25,7 @@ namespace DL.Repositories
 
         public void Update(string currentName, string newName)
         {
-            foreach (var category in categoryList.Where(c => c.Name == currentName))
+            foreach (var category in categoryList.Where(category => category.Name.Equals(currentName)))
             {
                 category.Name = newName;
             }
@@ -34,7 +34,7 @@ namespace DL.Repositories
 
         public void Delete(string categoryName)
         {
-            categoryList.RemoveAll((c) => c.Name == categoryName);
+            categoryList.RemoveAll((category) => category.Name.Equals(categoryName));
             saveChanges();
         }
 

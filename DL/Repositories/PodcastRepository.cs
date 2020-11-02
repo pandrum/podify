@@ -73,7 +73,7 @@ namespace DL.Repositories
             {
                 returnPodcastList = dataManager.Deserialize();
             }
-            catch (CustomException ex)
+            catch (DuplicateException ex)
             {
                 Console.WriteLine("No list to return." + "\n" + ex.Message);
             }
