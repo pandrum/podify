@@ -39,7 +39,7 @@ namespace DL
                     if (podcast.Url.Equals(url))
                     {
                         isValid = false;
-                        throw new DuplicateException();
+                        throw new DuplicateException("Podcast already exists in the feed.");
                     }
                     isValid = true;
                 }

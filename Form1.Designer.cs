@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.lbxEpisodes = new System.Windows.Forms.ListBox();
             this.btnAddNewPodcast = new System.Windows.Forms.Button();
@@ -65,22 +66,24 @@
             // lbxEpisodes
             // 
             this.lbxEpisodes.BackColor = System.Drawing.SystemColors.Window;
+            this.lbxEpisodes.Font = new System.Drawing.Font("Arial", 8F);
             this.lbxEpisodes.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lbxEpisodes.FormattingEnabled = true;
             this.lbxEpisodes.ItemHeight = 14;
-            this.lbxEpisodes.Location = new System.Drawing.Point(7, 364);
+            this.lbxEpisodes.Location = new System.Drawing.Point(10, 353);
             this.lbxEpisodes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lbxEpisodes.Name = "lbxEpisodes";
-            this.lbxEpisodes.Size = new System.Drawing.Size(563, 158);
+            this.lbxEpisodes.Size = new System.Drawing.Size(563, 144);
             this.lbxEpisodes.TabIndex = 0;
             this.lbxEpisodes.SelectedIndexChanged += new System.EventHandler(this.lbxEpisodes_SelectedIndexChanged);
             // 
             // btnAddNewPodcast
             // 
-            this.btnAddNewPodcast.Location = new System.Drawing.Point(412, 258);
+            this.btnAddNewPodcast.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnAddNewPodcast.Location = new System.Drawing.Point(412, 242);
             this.btnAddNewPodcast.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAddNewPodcast.Name = "btnAddNewPodcast";
-            this.btnAddNewPodcast.Size = new System.Drawing.Size(84, 25);
+            this.btnAddNewPodcast.Size = new System.Drawing.Size(84, 24);
             this.btnAddNewPodcast.TabIndex = 1;
             this.btnAddNewPodcast.Text = "Add New";
             this.btnAddNewPodcast.UseVisualStyleBackColor = true;
@@ -88,10 +91,11 @@
             // 
             // btnDeletePodcast
             // 
-            this.btnDeletePodcast.Location = new System.Drawing.Point(412, 313);
+            this.btnDeletePodcast.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnDeletePodcast.Location = new System.Drawing.Point(412, 297);
             this.btnDeletePodcast.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDeletePodcast.Name = "btnDeletePodcast";
-            this.btnDeletePodcast.Size = new System.Drawing.Size(84, 25);
+            this.btnDeletePodcast.Size = new System.Drawing.Size(84, 24);
             this.btnDeletePodcast.TabIndex = 3;
             this.btnDeletePodcast.Text = "Delete...";
             this.btnDeletePodcast.UseVisualStyleBackColor = true;
@@ -99,33 +103,36 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(11, 259);
+            this.txtUrl.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtUrl.Location = new System.Drawing.Point(11, 242);
             this.txtUrl.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtUrl.Multiline = true;
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(266, 20);
+            this.txtUrl.Size = new System.Drawing.Size(266, 23);
             this.txtUrl.TabIndex = 4;
             // 
             // lblPodcastUrl
             // 
             this.lblPodcastUrl.AutoSize = true;
-            this.lblPodcastUrl.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPodcastUrl.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblPodcastUrl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblPodcastUrl.Location = new System.Drawing.Point(7, 241);
+            this.lblPodcastUrl.Location = new System.Drawing.Point(7, 224);
             this.lblPodcastUrl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPodcastUrl.Name = "lblPodcastUrl";
-            this.lblPodcastUrl.Size = new System.Drawing.Size(80, 15);
+            this.lblPodcastUrl.Size = new System.Drawing.Size(95, 18);
             this.lblPodcastUrl.TabIndex = 5;
             this.lblPodcastUrl.Text = "Podcast URL";
             // 
             // cbInterval
             // 
             this.cbInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInterval.Font = new System.Drawing.Font("Arial", 8F);
             this.cbInterval.FormattingEnabled = true;
             this.cbInterval.Items.AddRange(new object[] {
             "1",
             "2",
             "3"});
-            this.cbInterval.Location = new System.Drawing.Point(290, 260);
+            this.cbInterval.Location = new System.Drawing.Point(290, 242);
             this.cbInterval.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbInterval.Name = "cbInterval";
             this.cbInterval.Size = new System.Drawing.Size(108, 22);
@@ -134,8 +141,9 @@
             // cbCategory
             // 
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.Font = new System.Drawing.Font("Arial", 8F);
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(290, 315);
+            this.cbCategory.Location = new System.Drawing.Point(290, 296);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(108, 22);
@@ -144,51 +152,55 @@
             // lblUpdateInterval
             // 
             this.lblUpdateInterval.AutoSize = true;
-            this.lblUpdateInterval.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdateInterval.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblUpdateInterval.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblUpdateInterval.Location = new System.Drawing.Point(287, 242);
+            this.lblUpdateInterval.Location = new System.Drawing.Point(287, 222);
             this.lblUpdateInterval.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUpdateInterval.Name = "lblUpdateInterval";
-            this.lblUpdateInterval.Size = new System.Drawing.Size(78, 15);
+            this.lblUpdateInterval.Size = new System.Drawing.Size(100, 18);
             this.lblUpdateInterval.TabIndex = 8;
             this.lblUpdateInterval.Text = "Interval (min)";
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblCategory.Location = new System.Drawing.Point(287, 298);
+            this.lblCategory.Location = new System.Drawing.Point(287, 276);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(56, 15);
+            this.lblCategory.Size = new System.Drawing.Size(72, 18);
             this.lblCategory.TabIndex = 9;
             this.lblCategory.Text = "Category";
             // 
             // lbxCategories
             // 
             this.lbxCategories.BackColor = System.Drawing.SystemColors.Window;
+            this.lbxCategories.Font = new System.Drawing.Font("Arial", 8F);
             this.lbxCategories.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lbxCategories.FormattingEnabled = true;
             this.lbxCategories.ItemHeight = 14;
             this.lbxCategories.Location = new System.Drawing.Point(591, 27);
             this.lbxCategories.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lbxCategories.Name = "lbxCategories";
-            this.lbxCategories.Size = new System.Drawing.Size(487, 200);
+            this.lbxCategories.Size = new System.Drawing.Size(487, 186);
             this.lbxCategories.TabIndex = 11;
             this.lbxCategories.SelectedIndexChanged += new System.EventHandler(this.lbxCategories_SelectedIndexChanged);
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(591, 262);
+            this.txtCategory.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtCategory.Location = new System.Drawing.Point(588, 244);
             this.txtCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtCategory.Multiline = true;
             this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(237, 20);
+            this.txtCategory.Size = new System.Drawing.Size(237, 23);
             this.txtCategory.TabIndex = 13;
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(751, 290);
+            this.btnDeleteCategory.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(751, 273);
             this.btnDeleteCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(74, 25);
@@ -199,7 +211,8 @@
             // 
             // btnSaveCategory
             // 
-            this.btnSaveCategory.Location = new System.Drawing.Point(670, 290);
+            this.btnSaveCategory.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnSaveCategory.Location = new System.Drawing.Point(670, 273);
             this.btnSaveCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSaveCategory.Name = "btnSaveCategory";
             this.btnSaveCategory.Size = new System.Drawing.Size(74, 25);
@@ -210,7 +223,8 @@
             // 
             // btnAddCategory
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(589, 290);
+            this.btnAddCategory.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnAddCategory.Location = new System.Drawing.Point(589, 273);
             this.btnAddCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(74, 25);
@@ -222,69 +236,72 @@
             // txtEpisodeDescription
             // 
             this.txtEpisodeDescription.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEpisodeDescription.Font = new System.Drawing.Font("Arial", 8F);
             this.txtEpisodeDescription.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.txtEpisodeDescription.Location = new System.Drawing.Point(588, 364);
+            this.txtEpisodeDescription.Location = new System.Drawing.Point(588, 353);
             this.txtEpisodeDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtEpisodeDescription.Multiline = true;
             this.txtEpisodeDescription.Name = "txtEpisodeDescription";
             this.txtEpisodeDescription.ReadOnly = true;
             this.txtEpisodeDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtEpisodeDescription.Size = new System.Drawing.Size(490, 157);
+            this.txtEpisodeDescription.Size = new System.Drawing.Size(490, 144);
             this.txtEpisodeDescription.TabIndex = 19;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(10, 317);
+            this.txtName.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtName.Location = new System.Drawing.Point(11, 296);
             this.txtName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(267, 20);
+            this.txtName.Size = new System.Drawing.Size(267, 23);
             this.txtName.TabIndex = 21;
             // 
             // lblPodcastName
             // 
             this.lblPodcastName.AutoSize = true;
-            this.lblPodcastName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPodcastName.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblPodcastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblPodcastName.Location = new System.Drawing.Point(7, 300);
+            this.lblPodcastName.Location = new System.Drawing.Point(8, 279);
             this.lblPodcastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPodcastName.Name = "lblPodcastName";
-            this.lblPodcastName.Size = new System.Drawing.Size(89, 15);
+            this.lblPodcastName.Size = new System.Drawing.Size(107, 18);
             this.lblPodcastName.TabIndex = 22;
             this.lblPodcastName.Text = "Podcast Name";
             // 
             // lblEpisodeList
             // 
             this.lblEpisodeList.AutoSize = true;
-            this.lblEpisodeList.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEpisodeList.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblEpisodeList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblEpisodeList.Location = new System.Drawing.Point(5, 342);
+            this.lblEpisodeList.Location = new System.Drawing.Point(8, 332);
             this.lblEpisodeList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEpisodeList.Name = "lblEpisodeList";
-            this.lblEpisodeList.Size = new System.Drawing.Size(74, 18);
+            this.lblEpisodeList.Size = new System.Drawing.Size(71, 18);
             this.lblEpisodeList.TabIndex = 23;
             this.lblEpisodeList.Text = "Episodes";
             // 
             // lblPodcastFeed
             // 
             this.lblPodcastFeed.AutoSize = true;
-            this.lblPodcastFeed.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPodcastFeed.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblPodcastFeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
             this.lblPodcastFeed.Location = new System.Drawing.Point(8, 6);
             this.lblPodcastFeed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPodcastFeed.Name = "lblPodcastFeed";
-            this.lblPodcastFeed.Size = new System.Drawing.Size(105, 18);
+            this.lblPodcastFeed.Size = new System.Drawing.Size(101, 18);
             this.lblPodcastFeed.TabIndex = 24;
             this.lblPodcastFeed.Text = "Podcast Feed";
             // 
             // lblCategoryList
             // 
             this.lblCategoryList.AutoSize = true;
-            this.lblCategoryList.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoryList.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblCategoryList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
             this.lblCategoryList.Location = new System.Drawing.Point(587, 6);
             this.lblCategoryList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategoryList.Name = "lblCategoryList";
-            this.lblCategoryList.Size = new System.Drawing.Size(86, 18);
+            this.lblCategoryList.Size = new System.Drawing.Size(84, 18);
             this.lblCategoryList.TabIndex = 25;
             this.lblCategoryList.Text = "Categories";
             // 
@@ -296,40 +313,48 @@
             this.dgPodcastFeed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgPodcastFeed.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgPodcastFeed.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPodcastFeed.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgPodcastFeed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPodcastFeed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TotalEpisodes,
             this.Podcast,
             this.Interval,
             this.Category});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgPodcastFeed.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgPodcastFeed.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgPodcastFeed.Location = new System.Drawing.Point(11, 27);
             this.dgPodcastFeed.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgPodcastFeed.MultiSelect = false;
             this.dgPodcastFeed.Name = "dgPodcastFeed";
             this.dgPodcastFeed.ReadOnly = true;
             this.dgPodcastFeed.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPodcastFeed.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPodcastFeed.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgPodcastFeed.RowHeadersVisible = false;
             this.dgPodcastFeed.RowHeadersWidth = 51;
             this.dgPodcastFeed.RowTemplate.ReadOnly = true;
             this.dgPodcastFeed.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPodcastFeed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPodcastFeed.Size = new System.Drawing.Size(560, 201);
+            this.dgPodcastFeed.Size = new System.Drawing.Size(560, 186);
             this.dgPodcastFeed.TabIndex = 20;
             this.dgPodcastFeed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
             this.dgPodcastFeed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPodcastFeed_CellClick);
@@ -368,10 +393,11 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(412, 286);
+            this.btnUpdate.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnUpdate.Location = new System.Drawing.Point(412, 270);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(84, 25);
+            this.btnUpdate.Size = new System.Drawing.Size(84, 24);
             this.btnUpdate.TabIndex = 26;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -380,20 +406,20 @@
             // lblNewCategory
             // 
             this.lblNewCategory.AutoSize = true;
-            this.lblNewCategory.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewCategory.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblNewCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblNewCategory.Location = new System.Drawing.Point(588, 242);
+            this.lblNewCategory.Location = new System.Drawing.Point(586, 225);
             this.lblNewCategory.Name = "lblNewCategory";
-            this.lblNewCategory.Size = new System.Drawing.Size(56, 15);
+            this.lblNewCategory.Size = new System.Drawing.Size(72, 18);
             this.lblNewCategory.TabIndex = 27;
             this.lblNewCategory.Text = "Category";
             // 
             // lblEpisodeDescription
             // 
             this.lblEpisodeDescription.AutoSize = true;
-            this.lblEpisodeDescription.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEpisodeDescription.Font = new System.Drawing.Font("SF Compact Text", 11F);
             this.lblEpisodeDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.lblEpisodeDescription.Location = new System.Drawing.Point(586, 342);
+            this.lblEpisodeDescription.Location = new System.Drawing.Point(586, 332);
             this.lblEpisodeDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEpisodeDescription.Name = "lblEpisodeDescription";
             this.lblEpisodeDescription.Size = new System.Drawing.Size(0, 18);
@@ -404,7 +430,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(1089, 538);
+            this.ClientSize = new System.Drawing.Size(1089, 512);
             this.Controls.Add(this.lblNewCategory);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblCategoryList);

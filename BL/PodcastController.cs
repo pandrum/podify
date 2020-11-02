@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Linq;
 using System;
+using System.Windows.Forms;
 
 namespace BL
 {
@@ -99,26 +100,28 @@ namespace BL
         {
             List<Episode> episodes = new List<Episode>();
             XDocument urlDocument = new XDocument();
-
+            try
             {
-                urlDocument = XDocument.Load(url);
-                episodes = (from x in urlDocument.Descendants("item")
-                            select new Episode
-                            {
-                                Name = x.Element("title").Value,
-                                Description = x.Element("description").Value
-                            }).ToList();
-            };
+                {
+                    urlDocument = XDocument.Load(url);
+                    episodes = (from x in urlDocument.Descendants("item")
+                                select new Episode
+                                {
+                                    Name = x.Element("title").Value,
+                                    Description = x.Element("description").Value
+                                }).ToList();
+                };
+            }
+            catch (System.Net.WebException)
+            {
+                MessageBox.Show("Network unavailable.");
+            }
             return episodes;
         }
 
         public void CheckForNewEpisodes(string url)
         {
             var newEpisodes = GetEpisodesForPodcast(url);
-            foreach (var item in newEpisodes)
-            {
-                Console.WriteLine(item.Name);
-            }
             podcastRepository.UpdatePodcastEpisodes(url, newEpisodes);
         }
     }

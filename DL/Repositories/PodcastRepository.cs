@@ -63,6 +63,7 @@ namespace DL.Repositories
             {
                 podcast.Episodes = newEpisodes;
             }
+            Console.WriteLine($"Podcast {url} updated. There is {newEpisodes.Count} currently available.");
             SaveChanges();
         }
 
