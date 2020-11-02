@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DL.Repositories
 {
-    public class EpisodeRepository 
+    public class EpisodeRepository
     {
         public List<Episode> episodeList;
         public List<Podcast> podcastList;

@@ -1,8 +1,6 @@
-﻿using Model;
-using DL.Repositories;
-using System;
+﻿using DL.Repositories;
+using Model;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BL
 {

@@ -1,11 +1,11 @@
-﻿using Model;
-using DL.Repositories;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Linq;
+﻿using DL.Repositories;
+using Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace BL
 {
