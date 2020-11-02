@@ -45,7 +45,7 @@ namespace AutomateEverything
                     await podcastController.AddNewPodcast(url, name, category, interval);
                     FillPodcastList();
                     ClearInputs();
-                    StartTimer(url, interval);
+                    InitTimers(url, interval);
                     MessageBox.Show("Podcast added!");
                 }
                 catch (EmptyTextFieldException)
@@ -57,13 +57,12 @@ namespace AutomateEverything
 
         private void btnUpdatePodcast_Click(object sender, EventArgs e)
         {
-            if (Validator.CheckTextField(txtUrl, txtName))
+            string url = txtUrl.Text;
+            string name = txtName.Text;
+            string interval = cbInterval.Text;
+            string category = cbCategory.Text;
+            if (Validator.CheckTextField(txtName, txtUrl) && Validator.CheckIfValidURL(url))
             {
-                string url = txtUrl.Text;
-                string name = txtName.Text;
-                string interval = cbInterval.Text;
-                string category = cbCategory.Text;
-
                 podcastController.UpdateAllPodcastInfo(selectedPodcast, url, name, interval, category);
                 FillPodcastList();
                 MessageBox.Show("Selected podcast updated!");
@@ -216,7 +215,7 @@ namespace AutomateEverything
             }
         }
 
-        private void StartTimer(string url, int interval)
+        private void InitTimers(string url, int interval)
         {
             var timer = new Timer();
             if (interval == 1)
