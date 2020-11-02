@@ -114,7 +114,6 @@ namespace BL
 
         public void CheckForNewEpisodes(string url)
         {
-            Console.WriteLine("podcastController");
             var newEpisodes = GetEpisodesForPodcast(url);
             foreach (var item in newEpisodes)
             {

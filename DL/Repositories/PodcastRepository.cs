@@ -50,7 +50,7 @@ namespace DL.Repositories
 
         public void UpdatePodcastCategory(string currentName, string newName)
         {
-            foreach (var podcast in podcastList.Where(p => p.Category == currentName))
+            foreach (var podcast in podcastList.Where(p => p.Category.Equals(currentName)))
             {
                 podcast.Category = newName;
             }
@@ -59,7 +59,6 @@ namespace DL.Repositories
 
         public void UpdatePodcastEpisodes(string url, List<Episode> newEpisodes)
         {
-            Console.WriteLine("PodcastRepo");
             foreach (var podcast in podcastList.Where(p => p.Url.Equals(url)))
             {
                 podcast.Episodes = newEpisodes;
@@ -74,9 +73,9 @@ namespace DL.Repositories
             {
                 returnPodcastList = dataManager.Deserialize();
             }
-            catch (InvalidOperationException)
+            catch (CustomException ex)
             {
-                Console.WriteLine("No list to return.");
+                Console.WriteLine("No list to return." + "\n" + ex.Message);
             }
             return returnPodcastList;
         }

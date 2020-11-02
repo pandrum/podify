@@ -123,9 +123,8 @@
             this.cbInterval.FormattingEnabled = true;
             this.cbInterval.Items.AddRange(new object[] {
             "1",
-            "5",
-            "10",
-            "15"});
+            "2",
+            "3"});
             this.cbInterval.Location = new System.Drawing.Point(290, 260);
             this.cbInterval.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbInterval.Name = "cbInterval";

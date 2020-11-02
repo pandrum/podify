@@ -38,7 +38,7 @@ namespace AutomateEverything
             string category = cbCategory.Text;
             int interval = Convert.ToInt32(cbInterval.SelectedItem);
 
-            if (Validator.CheckTextField(txtUrl, txtName) && Validator.CheckCombobox(cbCategory, cbInterval) && Validator.CheckIfValidURL(url))
+            if (Validator.CheckTextField(txtUrl, txtName) && Validator.CheckCombobox(cbCategory, cbInterval) && Validator.CheckIfValidURL(url) && Validator.CheckDuplicatePodcast(url))
             {
                 await podcastController.AddNewPodcast(url, name, category, interval);
                 FillPodcastList();
@@ -82,7 +82,7 @@ namespace AutomateEverything
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string categoryName = txtCategory.Text;
-            if (Validator.CheckCategoryIsNotEmpty(txtCategory))
+            if (Validator.CheckCategoryIsNotEmpty(txtCategory) && Validator.CheckDuplicateCategory(categoryName))
             {
                 Category category = new Category(categoryName);
                 categoryController.AddNewCategory(category);
@@ -239,7 +239,6 @@ namespace AutomateEverything
             dgPodcastFeed.Rows.Clear();
             podcasts = podcastController.GetPodcasts();
             FillPodcastList();
-            Console.WriteLine("Executed");
         }
 
         private void PopulateTextBoxes(int selectedRow)
