@@ -71,17 +71,20 @@ namespace AutomateEverything
 
         private void btnDeletePodcast_Click(object sender, EventArgs e)
         {
-            int rowindex = dgPodcastFeed.CurrentCell.RowIndex;
-            int columnindex = 1;
-            var podcastName = dgPodcastFeed.Rows[rowindex].Cells[columnindex].Value.ToString();
-
-            DialogResult response = MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (response == DialogResult.OK)
+            if (dgPodcastFeed.CurrentCell != null)
             {
-                podcastController.DeletePodcast(selectedPodcast);
-                FillPodcastList();
-                ClearInputs();
-                ClearEpisodesList();
+                int rowindex = dgPodcastFeed.CurrentCell.RowIndex;
+                int columnindex = 1;
+                var podcastName = dgPodcastFeed.Rows[rowindex].Cells[columnindex].Value.ToString();
+
+                DialogResult response = MessageBox.Show("Are you sure you want to delete the podcast " + podcastName + "?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (response == DialogResult.OK)
+                {
+                    podcastController.DeletePodcast(selectedPodcast);
+                    FillPodcastList();
+                    ClearInputs();
+                    ClearEpisodesList();
+                }
             }
         }
 
