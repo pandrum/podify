@@ -84,7 +84,7 @@ namespace DL.Repositories
         public override void GetNumberOfItems()
         {
             var items = podcastList.Count;
-            Console.WriteLine("The CategoryRepository has this many items in store: " + items);
+            Console.WriteLine("The PodcastRepository has this many items in store: " + items);
         }
 
         public void SaveChanges()
