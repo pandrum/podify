@@ -52,15 +52,22 @@ namespace BL
             return category;
         }
 
-        public void UpdateAllPodcastInfo(int index, string url, string name, string interval, string category)
+        public void UpdateAllPodcastInfo(int selectedPodcast, string url, string name, string interval, string category)
         {
-            var podcastList = podcastRepository.GetAll();
-            Podcast podcast = podcastList[index];
-            podcast.Url = url;
-            podcast.Name = name;
-            podcast.Interval = Convert.ToInt32(interval);
-            podcast.Category = category;
-            podcastRepository.Update(index, podcast);
+            try
+            {
+                var podcastList = podcastRepository.GetAll();
+                Podcast podcast = podcastList[selectedPodcast];
+                podcast.Url = url;
+                podcast.Name = name;
+                podcast.Interval = Convert.ToInt32(interval);
+                podcast.Category = category;
+                podcastRepository.Update(selectedPodcast, podcast);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Must select a podcast to update.");
+            }
         }
 
         public void UpdatePodcastCategory(string currentName, string newName)
